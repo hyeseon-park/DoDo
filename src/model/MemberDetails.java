@@ -11,8 +11,8 @@ import common.Role;
 
 public class MemberDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
-	private String mID;
-	private String mPass;
+	private String mId;
+	private String mPw;
 	private List<Role> authorities;
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
@@ -37,11 +37,11 @@ public class MemberDetails implements UserDetails {
 	}
 
 	public String getUsername() {
-		return mID;
+		return mId;
 	}
 	
 	public String getPassword() {
-		return mPass;
+		return mPw;
 	}
 
 	public boolean isAccountNonExpired() {
@@ -60,20 +60,20 @@ public class MemberDetails implements UserDetails {
 		return isEnabled;
 	}
 
-	public String getmID() {
-		return mID;
+	public String getmId() {
+		return mId;
 	}
 
-	public void setmID(String mID) {
-		this.mID = mID;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 
-	public String getmPass() {
-		return mPass;
+	public String getmPw() {
+		return mPw;
 	}
 
-	public void setmPass(String mPass) {
-		this.mPass = mPass;
+	public void setmPw(String mPw) {
+		this.mPw = mPw;
 	}
 
 	public void setAuthorities(List<Role> authorities) {
