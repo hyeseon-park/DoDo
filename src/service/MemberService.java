@@ -13,8 +13,8 @@ public class MemberService {
 	@Autowired
 	private MemberDao memberDao;
 
-	public Member getMemberByMID(String mID) {
-		return memberDao.selectMemberByMID(mID);
+	public Member getMemberByMId(String mId) {
+		return memberDao.selectMemberByMId(mId);
 	}
 
 	public List<String> getAuthoritiesByMNum(int mNum) {
