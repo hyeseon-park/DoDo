@@ -17,18 +17,17 @@ public class MemberDetailsService implements UserDetailsService {
 	private MemberService memberService;
 
 	@Override
-	public UserDetails loadUserByUsername(String mID) throws UsernameNotFoundException {
-		Member originalMember = memberService.getMemberByMID(mID);
-		String mPass = originalMember.getmPass();
+	public UserDetails loadUserByUsername(String mId) throws UsernameNotFoundException {
+		Member originalMember = memberService.getMemberByMId(mId);
+		String mPw = originalMember.getmPw();
 		int mNum = originalMember.getmNum();
 		List<String> authList = memberService.getAuthoritiesByMNum(mNum);
 		MemberDetails member = new MemberDetails();
-		member.setmID(mID);
-		member.setmPass(mPass);
+		member.setmId(mId);
+		member.setmPw(mPw);
 		for (String auth : authList) {
 			member.addAuth(auth);
 		}
 		return member;
 	}
-
 }
