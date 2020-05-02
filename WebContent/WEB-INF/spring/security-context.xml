@@ -13,8 +13,10 @@
 	
 		<security:intercept-url pattern="/member/*" 
 								access="permitAll"/>
+		<!--  
 		<security:intercept-url pattern="/project/*" 
 								access="hasRole('ROLE_USER')"/>
+		-->
 		<security:intercept-url pattern="/todo/*" 
 								access="hasRole('ROLE_USER')"/>
 		<security:access-denied-handler error-page="/member/login?login=false"/>

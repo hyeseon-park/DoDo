@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 import java.util.List;
 
-public class Proeject {
+public class Project {
 	
 	private int pNum;
 	private String pTitle;

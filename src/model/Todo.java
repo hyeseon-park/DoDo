@@ -12,6 +12,7 @@ public class Todo {
 	private int tIsComplete;
 	private int mNum;
 	private int pNum;
+	
 	public int gettNum() {
 		return tNum;
 	}

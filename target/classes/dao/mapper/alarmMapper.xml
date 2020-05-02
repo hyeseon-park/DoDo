@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AlarmDao">
+	
+	<insert id="insertAlarm">
+		insert into tbl_alarm
+		(a_num, a_member_to, a_member_from, p_num)
+		values(seq_alarm.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<delete id="deleteAlarm">
+		delete
+		from tbl_alarm
+		where a_num = #{param1}
+	</delete>
+	
+	<delete id="deleteAlarmByPNum">
+		delete
+		from tbl_alarm
+		where p_num = #{param1}
+	</delete>
+
+</mapper>
