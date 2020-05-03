@@ -13,4 +13,9 @@ public class MemberController {
 		return "/member/loginForm";
 	}
 
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String showJoinForm() {
+		return "/member/joinForm";
+	}
+
 }
