@@ -11,5 +11,6 @@ public interface TodoDao {
 	public int deleteTodo(int tNum);
 	public Todo selectTodoByTNum(int tNum);
 	public List<Todo> selectTodoByPNum(int pNum);
+	public List<Todo> selectTodoByMNum(int mNum);
 	
 }

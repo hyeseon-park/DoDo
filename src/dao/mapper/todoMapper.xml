@@ -31,5 +31,11 @@
 		from tbl_todo 
 		where p_num = #{pNum}
 	</select>	
-	
+
+	<select id="selectTodoByMNum" parameterType="int" resultType="todo">
+		select * 
+		from tbl_todo 
+		where m_num = #{mNum}
+	</select>	
+		
 </mapper>

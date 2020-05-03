@@ -51,5 +51,10 @@ public class TodoController {
 	public List<Todo> getTodoByPNum(int pNum) {
 		return todoService.getTodoByPNum(pNum);
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/getTodoByMNum", method = RequestMethod.POST)
+	public List<Todo> getTodoByMNum(int mNum) {
+		return todoService.getTodoByMNum(mNum);
+	}
 }

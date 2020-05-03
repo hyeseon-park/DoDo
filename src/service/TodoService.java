@@ -41,4 +41,9 @@ public class TodoService {
 	public List<Todo> getTodoByPNum(int pNum) {
 		return todoDao.selectTodoByPNum(pNum);
 	}
+	
+	public List<Todo> getTodoByMNum(int mNum) {
+		return todoDao.selectTodoByMNum(mNum);
+	}
+
 }
