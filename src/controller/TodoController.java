@@ -25,4 +25,9 @@ public class TodoController {
 		return "redirect:todoMain?pNum=" + todo.getpNum();
 	}
 
+	@RequestMapping(value = "/modifyTodo", method = RequestMethod.POST)
+	public String modifyTodo(Todo todo) {
+		todoService.modifyTodo(todo);
+		return "redirect:todoMain?pNum=" + todo.getpNum();
+	}
 }

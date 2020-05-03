@@ -18,4 +18,10 @@ public class TodoService {
 		return false;
 	}
 
+	public boolean modifyTodo(Todo todo) {
+		if(todoDao.updateTodo(todo) > 0) {
+			return true;
+		}
+		return false;
+	}
 }
