@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,9 @@ public class TodoService {
 	
 	public Todo getTodoByTNum(int tNum) {
 		return todoDao.selectTodoByTNum(tNum);
+	}
+	
+	public List<Todo> getTodoByPNum(int pNum) {
+		return todoDao.selectTodoByPNum(pNum);
 	}
 }

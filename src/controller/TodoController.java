@@ -1,9 +1,12 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Todo;
 import service.TodoService;
@@ -37,10 +40,16 @@ public class TodoController {
 		return "redirect:todoMain?pNum=" + pNum;
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/getTodoByTNum", method = RequestMethod.POST)
-	public String getTodoByTNum(int tNum, int pNum) {
-		todoService.getTodoByTNum(tNum);
-		return "redirect:todoMain?pNum=" + pNum;
+	public Todo getTodoByTNum(int tNum) {
+		return todoService.getTodoByTNum(tNum);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getTodoByPNum", method = RequestMethod.POST)
+	public List<Todo> getTodoByPNum(int pNum) {
+		return todoService.getTodoByPNum(pNum);
 	}
 	
 }

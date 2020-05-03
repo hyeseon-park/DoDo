@@ -25,4 +25,11 @@
 		from tbl_todo 
 		where t_num = #{tNum}
 	</select>	
+	
+	<select id="selectTodoByPNum" parameterType="int" resultType="todo">
+		select * 
+		from tbl_todo 
+		where p_num = #{pNum}
+	</select>	
+	
 </mapper>
