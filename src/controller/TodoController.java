@@ -30,4 +30,10 @@ public class TodoController {
 		todoService.modifyTodo(todo);
 		return "redirect:todoMain?pNum=" + todo.getpNum();
 	}
+
+	@RequestMapping(value = "/removeTodo", method = RequestMethod.POST)
+	public String removeTodo(int tNum, int pNum) {
+		todoService.removeTodo(tNum);
+		return "redirect:todoMain?pNum=" + pNum;
+	}
 }

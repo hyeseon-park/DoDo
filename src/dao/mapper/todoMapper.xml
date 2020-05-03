@@ -13,5 +13,10 @@
 		set t_title = #{tTitle}, t_desc = #{tDesc}, t_start_date = #{tStartDate}, t_end_date = #{tEndDate}, t_is_complete = #{tIsComplete}, m_num = #{mNum}, p_num = #{pNum}
 		where t_num = #{tNum}
 	</update>	
-	
+
+	<delete id="deleteTodo" parameterType="int">
+		delete 
+		from tbl_todo
+		where t_num = #{tNum}	
+	</delete>
 </mapper>

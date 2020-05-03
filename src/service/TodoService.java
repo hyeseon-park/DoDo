@@ -24,4 +24,11 @@ public class TodoService {
 		}
 		return false;
 	}
+	
+	public boolean removeTodo(int tNum) {
+		if(todoDao.deleteTodo(tNum) > 0) {
+			return true;
+		}
+		return false;
+	}
 }
