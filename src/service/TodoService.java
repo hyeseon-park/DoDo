@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,32 @@ public class TodoService {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean modifyTodo(Todo todo) {
+		if(todoDao.updateTodo(todo) > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean removeTodo(int tNum) {
+		if(todoDao.deleteTodo(tNum) > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Todo getTodoByTNum(int tNum) {
+		return todoDao.selectTodoByTNum(tNum);
+	}
+	
+	public List<Todo> getTodoByPNum(int pNum) {
+		return todoDao.selectTodoByPNum(pNum);
+	}
+	
+	public List<Todo> getTodoByMNum(int mNum) {
+		return todoDao.selectTodoByMNum(mNum);
 	}
 
 }
