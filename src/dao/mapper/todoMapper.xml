@@ -19,4 +19,10 @@
 		from tbl_todo
 		where t_num = #{tNum}	
 	</delete>
+	
+	<select id="selectTodoByTNum" parameterType="int" resultType="todo">
+		select * 
+		from tbl_todo 
+		where t_num = #{tNum}
+	</select>	
 </mapper>

@@ -36,4 +36,11 @@ public class TodoController {
 		todoService.removeTodo(tNum);
 		return "redirect:todoMain?pNum=" + pNum;
 	}
+	
+	@RequestMapping(value = "/getTodoByTNum", method = RequestMethod.POST)
+	public String getTodoByTNum(int tNum, int pNum) {
+		todoService.getTodoByTNum(tNum);
+		return "redirect:todoMain?pNum=" + pNum;
+	}
+	
 }

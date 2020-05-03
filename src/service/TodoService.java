@@ -31,4 +31,8 @@ public class TodoService {
 		}
 		return false;
 	}
+	
+	public Todo getTodoByTNum(int tNum) {
+		return todoDao.selectTodoByTNum(tNum);
+	}
 }
