@@ -9,8 +9,6 @@ public class ProjectContoroller {
 
 	@RequestMapping("/main")
 	public String showProjectMain() {
-		System.out.println("project main!!");
 		return "/project/projectMain";
 	}
-	
 }
