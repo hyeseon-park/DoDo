@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>todoForm</title>
+<title>todoAddForm</title>
 </head>
 <body>
 	<form action="addTodo" method="post">
