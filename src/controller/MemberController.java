@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Member;
 import service.MemberService;
 
 @Controller
@@ -21,5 +22,11 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String showJoinForm() {
 		return "/member/joinForm";
+	}
+	
+	@RequestMapping(value = "/joinMember", method = RequestMethod.POST)
+	public String joinMember(Member member) {
+		memberService.joinMember(member);
+		return "redirect:login";
 	}
 }

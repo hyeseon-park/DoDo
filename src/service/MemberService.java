@@ -20,5 +20,15 @@ public class MemberService {
 	public List<String> getAuthoritiesByMNum(int mNum) {
 		return memberDao.selectAuthoritiesByMNum(mNum);
 	}
+	
+	public boolean joinMember(Member member) {
+		if(memberDao.insertMember(member) > 0) {
+			if(memberDao.insertAuthority(member.getmNum()) > 0) {
+				return true;
+			}
+			return true;
+		}
+		return false;
+	}
 }
 
