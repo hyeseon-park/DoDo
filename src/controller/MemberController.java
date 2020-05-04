@@ -1,12 +1,18 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Member;
+import service.MemberService;
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+	@Autowired
+	MemberService memberService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginForm() {
@@ -18,4 +24,9 @@ public class MemberController {
 		return "/member/joinForm";
 	}
 
+	@RequestMapping(value = "/joinMember", method = RequestMethod.POST)
+	public String joinMember(Member member) {
+		memberService.joinMember(member);
+		return "redirect:login";
+	}
 }

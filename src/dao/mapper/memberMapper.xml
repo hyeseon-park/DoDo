@@ -5,13 +5,28 @@
 	<select id="selectMemberByMId" parameterType="String" resultType="member">
 		select * 
 		from member
-		where mId=#{mId}
+		where m_id=#{mId}
 	</select>	
 
 	<select id="selectAuthoritiesByMNum" parameterType="int" resultType="String">
 		select authority
 		from authority
-		where mNum=#{mNum}
-	</select>	
+		where m_num=#{mNum}
+	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		<selectKey order="BEFORE" keyProperty="mNum" resultType="int">
+			select seq_member.nextval from dual
+		</selectKey>
+		insert into tbl_member
+		(m_num, m_id, m_pw)
+		values (#{mNum}, #{mId}, #{mPw})
+	</insert>	
+	
+	<insert id="insertAuthority" parameterType="int">
+		insert into authority
+		(m_num)
+		values (#{mNum})
+	</insert>
 	
 </mapper>

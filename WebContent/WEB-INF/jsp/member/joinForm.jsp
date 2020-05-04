@@ -7,7 +7,7 @@
 <title>joinForm</title>
 </head>
 <body>
-	<form action="join" method="post">
+	<form action="joinMember" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		아이디<input type="text" name="mId">
 		비밀번호<input type="password" name="mPw">
