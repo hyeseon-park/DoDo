@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,14 +19,20 @@ public class TodoController {
 	private TodoService todoService;
 
 	@RequestMapping("/main")
-	public String showTodoMain() {
+	public String showTodoMain(Model model) {
+		model.addAttribute("todoList", todoService.getTodoByPNum(1));
 		return "/todo/todoMain";
+	}
+
+	@RequestMapping(value = "/todoForm", method = RequestMethod.GET)
+	public String showTodoForm() {
+		return "/todo/todoForm";
 	}
 
 	@RequestMapping(value = "/addTodo", method = RequestMethod.POST)
 	public String addTodo(Todo todo) {
 		todoService.addTodo(todo);
-		return "redirect:todoMain?pNum=" + todo.getpNum();
+		return "redirect:main";
 	}
 
 	@RequestMapping(value = "/modifyTodo", method = RequestMethod.POST)
@@ -39,13 +46,13 @@ public class TodoController {
 		todoService.removeTodo(tNum);
 		return "redirect:todoMain?pNum=" + pNum;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/getTodoByTNum", method = RequestMethod.POST)
 	public Todo getTodoByTNum(int tNum) {
 		return todoService.getTodoByTNum(tNum);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/getTodoByPNum", method = RequestMethod.POST)
 	public List<Todo> getTodoByPNum(int pNum) {

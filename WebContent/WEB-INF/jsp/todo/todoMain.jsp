@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +8,15 @@
 <title>todoMain</title>
 </head>
 <body>
-	<form action="addTodo" method="post">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		Title<input type="text" name="tTitle">
-		Description<input type="text" name="tDesc">
-		Start Date<input type="date" name="tStartDate">
-		End Date<input type="date" name="tEndDate">
-		Is Complete<input type="number" name="tIsComplete">
-		mNum<input type="number" name="mNum">
-		pNum<input type="number" name="pNum">
-		<input type="submit" value="추가">
-	</form>
+	<input type="button" value="todo 추가" onclick="location.href='todoForm'">
+
+	<c:forEach items="${todoList}" var="todo">
+		<div>
+			<p>${todo.tNum }</p>
+			<p>${todo.tTitle }</p>
+			<p>${todo.tDesc }</p>
+		</div>
+	</c:forEach>
+
 </body>
 </html>
