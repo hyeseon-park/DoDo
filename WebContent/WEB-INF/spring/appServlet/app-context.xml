@@ -11,6 +11,7 @@
 
 	<mvc:annotation-driven/>
 	<mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</bean>
