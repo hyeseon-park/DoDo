@@ -8,8 +8,9 @@
 <title>todoMain</title>
 </head>
 <body>
-	<input type="button" value="todo 추가" onclick="location.href='todoForm'">
-
+	<input type="button" value="todo 추가" onclick="location.href='todoAddForm'">
+	<input type="button" value="todo 수정" onclick="location.href='todoModifyForm?tNum=2'">
+	
 	<c:forEach items="${todoList}" var="todo">
 		<div>
 			<p>${todo.tNum }</p>

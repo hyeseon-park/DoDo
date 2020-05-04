@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Todo;
@@ -24,9 +25,9 @@ public class TodoController {
 		return "/todo/todoMain";
 	}
 
-	@RequestMapping(value = "/todoForm", method = RequestMethod.GET)
-	public String showTodoForm() {
-		return "/todo/todoForm";
+	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
+	public String showTodoAddForm() {
+		return "/todo/todoAddForm";
 	}
 
 	@RequestMapping(value = "/addTodo", method = RequestMethod.POST)
@@ -35,16 +36,22 @@ public class TodoController {
 		return "redirect:main";
 	}
 
+	@RequestMapping(value = "/todoModifyForm", method = RequestMethod.GET)
+	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum")int tNum) {
+		model.addAttribute("todo", todoService.getTodoByTNum(2));
+		return "/todo/todoModifyForm";
+	}
+	
 	@RequestMapping(value = "/modifyTodo", method = RequestMethod.POST)
 	public String modifyTodo(Todo todo) {
 		todoService.modifyTodo(todo);
-		return "redirect:todoMain?pNum=" + todo.getpNum();
+		return "redirect:main";
 	}
 
 	@RequestMapping(value = "/removeTodo", method = RequestMethod.POST)
-	public String removeTodo(int tNum, int pNum) {
+	public String removeTodo(@RequestParam(value = "tNum")int tNum, @RequestParam(value = "pNum")int pNum) {
 		todoService.removeTodo(tNum);
-		return "redirect:todoMain?pNum=" + pNum;
+		return "redirect:main";
 	}
 
 	@ResponseBody
