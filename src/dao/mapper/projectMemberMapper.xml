@@ -4,7 +4,7 @@
 	
 	<insert id="insertProjectMember">
 		insert into tbl_project_member
-		(pm_num, m_num, p_num)
+		(pm_num, p_num, m_num)
 		values(seq_project_member.nextval, #{param1}, #{param2})
 	</insert>
 	
