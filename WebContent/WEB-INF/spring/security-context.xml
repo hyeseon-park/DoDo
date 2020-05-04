@@ -24,7 +24,7 @@
 		<security:form-login login-page="/member/login" 
 							 login-processing-url="/member/login"
 							 authentication-failure-url="/member/login?login=fail"
-							 default-target-url="/project/projectMain"
+							 default-target-url="/project/main"
 							 username-parameter="mId"
 							 password-parameter="mPw"/>
 		<security:logout delete-cookies="JSESSIONID"
