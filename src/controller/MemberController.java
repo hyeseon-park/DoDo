@@ -23,7 +23,7 @@ public class MemberController {
 	public String showJoinForm() {
 		return "/member/joinForm";
 	}
-	
+
 	@RequestMapping(value = "/joinMember", method = RequestMethod.POST)
 	public String joinMember(Member member) {
 		memberService.joinMember(member);
