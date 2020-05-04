@@ -5,7 +5,15 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/headerProject.jsp"%>
-projectMain
-
+	
+	<c:forEach items="${projectList}" var="project">
+		<div class="project">
+			<p>${project.pNum }</p>
+			<p>${project.pTitle }</p>
+			<p>${project.pDesc }</p>
+			<p>${project.pStartDate }</p>
+			<p>${project.pEndDate }</p>
+		</div>
+	</c:forEach>
 </body>
 </html>

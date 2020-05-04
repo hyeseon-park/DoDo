@@ -57,6 +57,7 @@ public class ProjectService {
 	}
 
 	public Project getProject(int pNum) {
+		System.out.println("Pnum : " + pNum);
 		return projectDao.selectProjectByPNum(pNum);
 	}
 

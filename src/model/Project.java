@@ -10,7 +10,6 @@ public class Project {
 	private String pDesc;
 	private Date pStartDate;
 	private Date pEndDate;
-	private List<Member> pMemberList;
 	
 	public int getpNum() {
 		return pNum;
@@ -42,17 +41,11 @@ public class Project {
 	public void setpEndDate(Date pEndDate) {
 		this.pEndDate = pEndDate;
 	}
-	public List<Member> getpMemberList() {
-		return pMemberList;
-	}
-	public void setpMemberList(List<Member> pMemberList) {
-		this.pMemberList = pMemberList;
-	}
 	
 	@Override
 	public String toString() {
 		return "Proeject [pNum=" + pNum + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pStartDate=" + pStartDate
-				+ ", pEndDate=" + pEndDate + ", pMemberList=" + pMemberList + "]";
+				+ ", pEndDate=" + pEndDate + "]";
 	}
 
 }

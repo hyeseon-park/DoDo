@@ -20,16 +20,23 @@
 		where p_num = #{pNum}
 	</delete>
 	
-	<select id="selectProjectByPNum" parameterType="int" resultType="project">
+	<select id="selectProjectByPNum" parameterType="int" resultMap="projectMap">
 		select * 
 		from tbl_project 
 		where p_num = #{param1}
 	</select>
 	
-	<select id="selectProjectByMNum" parameterType="int" resultType="project">
+	<select id="selectProjectByMNum" parameterType="int" resultMap="projectMap">
 		select p.p_num, p.p_title, p.p_desc, p.p_start_date, p.p_end_date
 		from tbl_project p join tbl_project_member pm
 		on p.p_num = pm.p_num and pm.m_num = #{param1}
 	</select>
 	
+	<resultMap id="projectMap" type="project">
+		<result column="p_num" property="pNum" />
+		<result column="p_title" property="pTitle" />
+		<result column="p_desc" property="pDesc" />
+		<result column="p_start_Date" property="pStartDate" />
+		<result column="p_end_date" property="pEndDate" />
+	</resultMap>
 </mapper>
