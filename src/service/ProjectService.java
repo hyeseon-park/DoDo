@@ -30,12 +30,9 @@ public class ProjectService {
 	ProjectMemberDao projectMemberDao;
 
 	@Transactional
-	public boolean addProject(Project project, int mNum, List<Integer> inviteMebmerList) {
+	public boolean addProject(Project project, int mNum) {
 		if (projectDao.insertProject(project) > 0) {
 			if (projectMemberDao.insertProjectMember(project.getpNum(), mNum) > 0) {
-				for (int memberTo : inviteMebmerList) {
-					alarmDao.insertAlarm(memberTo, mNum, project.getpNum());
-				}
 				return true;
 			}
 		}
