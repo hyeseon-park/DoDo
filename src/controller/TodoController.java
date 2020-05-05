@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Member;
+import model.Project;
 import model.Todo;
 import service.MemberService;
 import service.ProjectService;
@@ -52,7 +53,7 @@ public class TodoController {
 		}
 
 		model.addAttribute("todoMap", todoMap);
-		model.addAttribute("progress", 30);
+		model.addAttribute("progress", projectService.getProject(pNum).getpProgress());
 		session.setAttribute("pNum", pNum);
 		return "/todo/todoMain";
 	}
@@ -136,23 +137,25 @@ public class TodoController {
 		int pNum = todo.getpNum();
 		List<Todo> todoList = todoService.getTodoByPNum(pNum);
 
-		int completeProgressSize = todoList.size();
-		int completeProgress = 0;
+		int allTodoCount = todoList.size();
+		int completedTodoCount = 0;
 		for (Todo t : todoList) {
 			if (t.gettIsComplete() == 1) {
-				completeProgress++;
+				completedTodoCount++;
 			}
 		}
 
-		double progress = calcProgress(completeProgress, completeProgressSize);
+		double progress = calculateProgress(pNum, completedTodoCount, allTodoCount);
 		progressMap.put("tIsComplete", todo.gettIsComplete());
 		progressMap.put("progress", progress);
 		return progressMap;
 	}
 
-	public double calcProgress(int completedTodo, int allTodo) {
-		double progress = Math.round(((double) completedTodo / allTodo * 100)*10)/10.0;
-		System.out.println("progress : "+progress);
+	public double calculateProgress(int pNum, int completedTodo, int allTodo) {
+		double progress = Math.round(((double) completedTodo / allTodo * 100) * 10) / 10.0;
+		Project project = projectService.getProject(pNum);
+		project.setpProgress(progress);
+		projectService.modifyProject(project);
 		return progress;
 	}
 

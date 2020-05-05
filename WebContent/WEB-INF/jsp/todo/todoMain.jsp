@@ -13,6 +13,7 @@ div {border: 1px solid black; margin: 10px}
 </style>
 </head>
 <body>
+	<input type="button" value="project 이동" onclick="location.href='../project/main'">
 	<input type="button" value="todo 추가" onclick="location.href='todoAddForm'">
 	
 	<div>
