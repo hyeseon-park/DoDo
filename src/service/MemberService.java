@@ -30,5 +30,9 @@ public class MemberService {
 		}
 		return false;
 	}
+	
+	public List<Member> searchMemberList(String keyword){
+		return memberDao.selectMemberByKeyword(keyword);
+	}
 }
 
