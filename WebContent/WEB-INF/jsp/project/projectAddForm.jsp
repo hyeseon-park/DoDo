@@ -7,7 +7,7 @@
 <title>projectForm</title>
 </head>
 <body>
-	<form action="create" method="post">
+	<form action="addProject" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">	
 		<input type="text" name="pTitle">
 		<input type="text" name="pDesc">
