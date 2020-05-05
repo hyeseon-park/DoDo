@@ -76,8 +76,14 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/todoModifyForm", method = RequestMethod.GET)
-	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum") int tNum) {
+	public String showTodoModifyForm(HttpSession session, Model model, @RequestParam(value = "tNum") int tNum) {
+		
+		int pNum = (int) session.getAttribute("pNum");
+		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
+		
 		model.addAttribute("todo", todoService.getTodoByTNum(tNum));
+		model.addAttribute("projectMemberList", projectMemberList);
+		
 		return "/todo/todoModifyForm";
 	}
 
