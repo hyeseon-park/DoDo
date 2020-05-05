@@ -13,6 +13,7 @@
 	<ul>
 		<c:forEach items="${projectInfo}" var="projectInfo">
 			<li style="border: 1px solid black;">
+				<button onclick="location.href='../todo/main?pNum=${projectInfo.projectList.pNum }'">todo 이동</button>
 				<button onclick="location.href='projectModifyForm?pNum=${projectInfo.projectList.pNum }'">수정</button>
 				<button onclick="location.href='projectForm'">나가기</button>
 				<button onclick="location.href='inviteMemberForm?pNum=${projectInfo.projectList.pNum }'">초대</button>
