@@ -6,15 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import model.Alarm;
 import model.Member;
 import model.Project;
+import service.AlarmService;
 import service.MemberService;
 import service.ProjectService;
 
@@ -26,11 +31,17 @@ public class ProjectContoroller {
 	private ProjectService projectService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private AlarmService alarmService;
+	@Autowired
+	private SimpMessagingTemplate smt;
 
 	
 	@RequestMapping("/main")
-	public String showProjectMain(Principal principal, Model model) {
+	public String showProjectMain(Principal principal ,HttpSession session, Model model) {
 		String memberId = principal.getName();
+		Member member = memberService.getMemberByMId(memberId);
+		session.setAttribute("member", member);
 		int mNum = memberService.getMemberByMId(memberId).getmNum();
 		
 		List<Map<String, Object>> projectInfo = new ArrayList<Map<String,Object>>();
@@ -75,7 +86,8 @@ public class ProjectContoroller {
 	}
 	
 	@RequestMapping(value = "/inviteMemberForm")
-	public String inviteMemberForm() {
+	public String inviteMemberForm(int pNum, Model model) {
+		model.addAttribute("projectNum", pNum);
 		return "/project/inviteMemberForm";
 	}
 	
@@ -86,9 +98,28 @@ public class ProjectContoroller {
 	}
 	
 	@RequestMapping(value = "/inviteMember", method = RequestMethod.POST)
-	public void inviteMember(String keyword) {
-		System.out.println(keyword);
+	public String inviteMember(Alarm alarm) {
+		int aNum = alarmService.addAlarm(alarm);
+		smt.convertAndSend("/category/invite/"+alarm.getaMemberTo(),alarmService.getAlarm(aNum));
+		return "redirect:/project/main";
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/showAlarmList")
+	public List<Alarm> showAlarmList(int mNum){
+		return alarmService.getAlarmList(mNum);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/acceptInvite")
+	public boolean acceptInvite(int aNum, int pNum, int mNum) {
+		return alarmService.acceptInviteAlarm(aNum, pNum, mNum);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/rejectInvite")
+	public boolean rejectInvite(int aNum) {
+		return alarmService.rejectInviteAlarm(aNum);	
+	}
 }

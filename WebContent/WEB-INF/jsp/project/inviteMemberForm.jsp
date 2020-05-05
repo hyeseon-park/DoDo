@@ -9,7 +9,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	$("#keyword").on("keydown", function() {
+	$("#keyword").on("keyup", function() {
 		$(".memberlist li").remove();
 		var keyword = $("#keyword").val();
 		if (keyword == "") {
@@ -22,15 +22,21 @@ $(function(){
 				success : function(mList){
 					if(mList.length>0){
 						for(var i in mList){
-							var li = $("<li>");						
+							var li = $("<li>");	
 							li.text(mList[i].mId);
+							(function(m) {
+								li.on("click", function(){
+									$("#keyword").val(mList[m].mId);
+									$(".inviteMemberTo").val(mList[m].mNum);
+								});
+							})(i)
 							$(".memberlist").append(li);
 						}
 					}else{
 						var li = $("<li>");						
 						li.text("no result");
 						$(".memberlist").append(li);
-						
+
 					}
 					
 				},
@@ -50,7 +56,10 @@ $(function(){
 <body>
 	<form action="inviteMember" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input type="text" name="keyword" id="keyword">
+		<input type="hidden" name="aMemberFrom" value="${member.mNum}">
+		<input type="hidden" name="aMemberTo" class="inviteMemberTo">
+		<input type="hidden" name="pNum" value="${projectNum}">
+		<input type="text" id="keyword">
 		<input type="submit" value="submit">
 	</form>
 	<ul class="memberlist">

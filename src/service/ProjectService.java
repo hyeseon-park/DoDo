@@ -27,8 +27,6 @@ public class ProjectService {
 	@Autowired
 	ProjectDao projectDao;
 	@Autowired
-	AlarmDao alarmDao;
-	@Autowired
 	ProjectMemberDao projectMemberDao;
 	@Autowired
 	MemberDao memberDao;
@@ -58,10 +56,6 @@ public class ProjectService {
 	
 	public List<Member> getProjectMemberList(int pNum){
 		return memberDao.selectMemberByPNum(pNum);
-	}
-
-	public boolean deleteAlarm(int aNum) {
-		return alarmDao.deleteAlarm(aNum) > 0 ? true : false;
 	}
 
 	public boolean deleteProjectMember(int mNum, int pNum) {

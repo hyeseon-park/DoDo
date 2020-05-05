@@ -1,9 +1,14 @@
 package dao;
 
+import java.util.List;
+
+import model.Alarm;
+
 public interface AlarmDao {
 	
-	public int insertAlarm(int memberTo, int memberFrom, int pNum);
+	public int insertAlarm(Alarm alarm);
 	public int deleteAlarm(int aNum);
-	public int deleteAlarmByPNum(int pNum);
+	public Alarm selectAlarm(int aNum);
+	public List<Alarm> selectAlarmList(int aMemberTo);
 
 }
