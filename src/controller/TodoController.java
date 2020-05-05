@@ -30,7 +30,7 @@ public class TodoController {
 	private MemberService memberService;
 	@Autowired
 	private ProjectService projectService;
-	
+
 	@RequestMapping("/main")
 	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
 		Map<String, List<Todo>> todoMap = new HashMap<String, List<Todo>>();
@@ -52,19 +52,20 @@ public class TodoController {
 		}
 
 		model.addAttribute("todoMap", todoMap);
+		model.addAttribute("progress", 30);
 		session.setAttribute("pNum", pNum);
 		return "/todo/todoMain";
 	}
 
 	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
 	public String showTodoAddForm(HttpSession session, Model model) {
-	
+
 		int pNum = (int) session.getAttribute("pNum");
 		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
-		
+
 		model.addAttribute("pNum", pNum);
 		model.addAttribute("projectMemberList", projectMemberList);
-		
+
 		return "/todo/todoAddForm";
 	}
 
@@ -76,8 +77,14 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/todoModifyForm", method = RequestMethod.GET)
-	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum") int tNum) {
+	public String showTodoModifyForm(HttpSession session, Model model, @RequestParam(value = "tNum") int tNum) {
+
+		int pNum = (int) session.getAttribute("pNum");
+		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
+
 		model.addAttribute("todo", todoService.getTodoByTNum(tNum));
+		model.addAttribute("projectMemberList", projectMemberList);
+
 		return "/todo/todoModifyForm";
 	}
 
@@ -112,4 +119,41 @@ public class TodoController {
 	public List<Todo> getTodoByMNum(int mNum) {
 		return todoService.getTodoByMNum(mNum);
 	}
+
+	@ResponseBody
+	@RequestMapping("/getCompleteProgress")
+	public Map<String, Object> getCompleteProgress(@RequestParam(value = "tNum") int tNum) {
+		Map<String, Object> progressMap = new HashMap<String, Object>();
+
+		Todo todo = todoService.getTodoByTNum(tNum);
+		if (todo.gettIsComplete() == 0) {
+			todo.settIsComplete(1);
+		} else {
+			todo.settIsComplete(0);
+		}
+		todoService.modifyTodo(todo);
+
+		int pNum = todo.getpNum();
+		List<Todo> todoList = todoService.getTodoByPNum(pNum);
+
+		int completeProgressSize = todoList.size();
+		int completeProgress = 0;
+		for (Todo t : todoList) {
+			if (t.gettIsComplete() == 1) {
+				completeProgress++;
+			}
+		}
+
+		double progress = calcProgress(completeProgress, completeProgressSize);
+		progressMap.put("tIsComplete", todo.gettIsComplete());
+		progressMap.put("progress", progress);
+		return progressMap;
+	}
+
+	public double calcProgress(int completedTodo, int allTodo) {
+		double progress = Math.round(((double) completedTodo / allTodo * 100)*10)/10.0;
+		System.out.println("progress : "+progress);
+		return progress;
+	}
+
 }
