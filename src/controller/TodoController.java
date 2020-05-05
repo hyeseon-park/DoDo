@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import model.Member;
 import model.Todo;
 import service.MemberService;
+import service.ProjectService;
 import service.TodoService;
 
 @Controller
@@ -26,7 +28,9 @@ public class TodoController {
 	private TodoService todoService;
 	@Autowired
 	private MemberService memberService;
-
+	@Autowired
+	private ProjectService projectService;
+	
 	@RequestMapping("/main")
 	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
 		Map<String, List<Todo>> todoMap = new HashMap<String, List<Todo>>();
@@ -54,8 +58,13 @@ public class TodoController {
 
 	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
 	public String showTodoAddForm(HttpSession session, Model model) {
+	
 		int pNum = (int) session.getAttribute("pNum");
+		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
+		
 		model.addAttribute("pNum", pNum);
+		model.addAttribute("projectMemberList", projectMemberList);
+		
 		return "/todo/todoAddForm";
 	}
 
