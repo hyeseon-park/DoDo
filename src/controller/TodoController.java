@@ -1,6 +1,10 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +24,18 @@ public class TodoController {
 	private TodoService todoService;
 
 	@RequestMapping("/main")
-	public String showTodoMain(Model model) {
-		model.addAttribute("todoList", todoService.getTodoByPNum(1));
+	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
+		Map<Integer, Object> todoMap = new HashMap<Integer, Object>();
+		List<Todo> todoList = todoService.getTodoByPNum(pNum);
+		
+		for (int i = 0; i < todoList.size(); i++) {
+			int mNum = todoList.get(i).getmNum();
+			List<Todo> todoListByMNum = todoService.getTodoByMNum(mNum);
+			todoMap.put(mNum, todoListByMNum);
+		}
+
+		model.addAttribute("todoMap", todoMap);
+		session.setAttribute("pNum", pNum);
 		return "/todo/todoMain";
 	}
 
@@ -37,11 +51,11 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/todoModifyForm", method = RequestMethod.GET)
-	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum")int tNum) {
+	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum") int tNum) {
 		model.addAttribute("todo", todoService.getTodoByTNum(2));
 		return "/todo/todoModifyForm";
 	}
-	
+
 	@RequestMapping(value = "/modifyTodo", method = RequestMethod.POST)
 	public String modifyTodo(Todo todo) {
 		todoService.modifyTodo(todo);
@@ -49,7 +63,7 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/removeTodo", method = RequestMethod.POST)
-	public String removeTodo(@RequestParam(value = "tNum")int tNum, @RequestParam(value = "pNum")int pNum) {
+	public String removeTodo(@RequestParam(value = "tNum") int tNum, @RequestParam(value = "pNum") int pNum) {
 		todoService.removeTodo(tNum);
 		return "redirect:main";
 	}
