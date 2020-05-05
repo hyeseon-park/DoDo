@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,15 +45,14 @@ public class ProjectService {
 	}
 
 	public Project getProject(int pNum) {
-		System.out.println("Pnum : " + pNum);
 		return projectDao.selectProjectByPNum(pNum);
 	}
 
 	public List<Project> getProjectList(int mNum) {
 		return projectDao.selectProjectByMNum(mNum);
 	}
-	
-	public List<Member> getProjectMemberList(int pNum){
+
+	public List<Member> getProjectMemberList(int pNum) {
 		return memberDao.selectMemberByPNum(pNum);
 	}
 

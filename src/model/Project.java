@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.List;
 
 public class Project {
 	
@@ -10,6 +9,7 @@ public class Project {
 	private String pDesc;
 	private Date pStartDate;
 	private Date pEndDate;
+	private double pProgress;
 	
 	public int getpNum() {
 		return pNum;
@@ -41,11 +41,15 @@ public class Project {
 	public void setpEndDate(Date pEndDate) {
 		this.pEndDate = pEndDate;
 	}
-	
+	public double getpProgress() {
+		return pProgress;
+	}
+	public void setpProgress(double pProgress) {
+		this.pProgress = pProgress;
+	}
 	@Override
 	public String toString() {
-		return "Proeject [pNum=" + pNum + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pStartDate=" + pStartDate
-				+ ", pEndDate=" + pEndDate + "]";
+		return "Project [pNum=" + pNum + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pStartDate=" + pStartDate
+				+ ", pEndDate=" + pEndDate + ", pProgress=" + pProgress + "]";
 	}
-
 }

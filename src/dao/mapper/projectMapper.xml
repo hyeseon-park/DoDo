@@ -13,7 +13,7 @@
 	
 	<update id="updateProject" parameterType="project">
 		update tbl_project
-		set p_title = #{pTitle}, p_desc = #{pDesc}, p_start_date = #{pStartDate, jdbcType=VARCHAR}, p_end_date = #{pEndDate, jdbcType=VARCHAR}
+		set p_title = #{pTitle}, p_desc = #{pDesc}, p_start_date = #{pStartDate, jdbcType=VARCHAR}, p_end_date = #{pEndDate, jdbcType=VARCHAR}, p_progress = #{pProgress}
 		where p_num = #{pNum}
 	</update>
 	
@@ -35,5 +35,6 @@
 		<result column="p_desc" property="pDesc" />
 		<result column="p_start_date" property="pStartDate" />
 		<result column="p_end_date" property="pEndDate" />
+		<result column="p_progress" property="pProgress" />
 	</resultMap>
 </mapper>
