@@ -29,6 +29,18 @@
 		values (#{mNum})
 	</insert>
 	
+	<select id="selectMemberByPNum" resultMap="memberMap">
+		select m.m_num, m.m_id, m.m_pw
+		from tbl_project_member pm join tbl_member m
+		on pm.p_num = #{param1} and pm.m_num = m.m_num
+	</select>
+	
+	<select id="selectMemberByKeyword" resultMap="memberMap">
+		select *
+		from tbl_member
+		where m_id like '%'||#{keyword}||'%'	
+	</select>
+	
 	<resultMap id="memberMap" type="member">
 		<result column="m_num" property="mNum" />
 		<result column="m_id" property="mId" />
