@@ -9,14 +9,20 @@
 </head>
 <body>
 	<input type="button" value="todo 추가" onclick="location.href='todoAddForm'">
-	<input type="button" value="todo 수정" onclick="location.href='todoModifyForm?tNum=2'">
 	
-	<c:forEach items="${todoList}" var="todo">
-		<div>
-			<p>${todo.tNum }</p>
-			<p>${todo.tTitle }</p>
-			<p>${todo.tDesc }</p>
-		</div>
+	<c:forEach items="${todoMap}" var="todoMap" varStatus="status">
+		<div>${todoMap.key}</div>
+		<c:forEach items="${todoMap.value}" var="todoValue">
+			<div>${todoValue.tTitle}</div>
+			<div>${todoValue.tDesc}</div>
+			<div>${todoValue.tStartDate}</div>
+			<div>${todoValue.tEndDate}</div>
+			<div>${todoValue.tIsComplete}</div>
+			<input type="button" value="this todo 수정" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
+			<input type="button" value="this todo 삭제" onclick="location.href='removeTodo?tNum=${todoValue.tNum}'">
+			<hr>
+		</c:forEach>
+		<hr>
 	</c:forEach>
 
 </body>

@@ -13,6 +13,10 @@ public class MemberService {
 	@Autowired
 	private MemberDao memberDao;
 
+	public Member getMemberByMNum(int mNum) {
+		return memberDao.selectMemberByMNum(mNum);
+	}
+
 	public Member getMemberByMId(String mId) {
 		return memberDao.selectMemberByMId(mId);
 	}
@@ -20,19 +24,18 @@ public class MemberService {
 	public List<String> getAuthoritiesByMNum(int mNum) {
 		return memberDao.selectAuthoritiesByMNum(mNum);
 	}
-	
+
 	public boolean joinMember(Member member) {
-		if(memberDao.insertMember(member) > 0) {
-			if(memberDao.insertAuthority(member.getmNum()) > 0) {
+		if (memberDao.insertMember(member) > 0) {
+			if (memberDao.insertAuthority(member.getmNum()) > 0) {
 				return true;
 			}
 			return true;
 		}
 		return false;
 	}
-	
-	public List<Member> searchMemberList(String keyword){
+
+	public List<Member> searchMemberList(String keyword) {
 		return memberDao.selectMemberByKeyword(keyword);
 	}
 }
-
