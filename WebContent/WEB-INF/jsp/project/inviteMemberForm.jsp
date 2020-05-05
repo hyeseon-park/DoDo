@@ -10,7 +10,7 @@
 $(function(){
 	
 	$("#keyword").on("keyup", function() {
-		$(".memberlist li").remove();
+		
 		var keyword = $("#keyword").val();
 		if (keyword == "") {
 		}else{
@@ -20,6 +20,7 @@ $(function(){
 				type : "get",
 				dataType : "json",
 				success : function(mList){
+					$(".memberlist li").remove();
 					if(mList.length>0){
 						for(var i in mList){
 							var li = $("<li>");	
@@ -59,7 +60,7 @@ $(function(){
 		<input type="hidden" name="aMemberFrom" value="${member.mNum}">
 		<input type="hidden" name="aMemberTo" class="inviteMemberTo">
 		<input type="hidden" name="pNum" value="${projectNum}">
-		<input type="text" id="keyword">
+		<input autocomplete="off" type="text" id="keyword">
 		<input type="submit" value="submit">
 	</form>
 	<ul class="memberlist">
