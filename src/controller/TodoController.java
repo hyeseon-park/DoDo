@@ -27,7 +27,7 @@ public class TodoController {
 	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
 		Map<Integer, Object> todoMap = new HashMap<Integer, Object>();
 		List<Todo> todoList = todoService.getTodoByPNum(pNum);
-		
+
 		for (int i = 0; i < todoList.size(); i++) {
 			int mNum = todoList.get(i).getmNum();
 			List<Todo> todoListByMNum = todoService.getTodoByMNum(mNum);
@@ -45,27 +45,30 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/addTodo", method = RequestMethod.POST)
-	public String addTodo(Todo todo) {
+	public String addTodo(HttpSession session, Todo todo) {
 		todoService.addTodo(todo);
-		return "redirect:main";
+		int pNum = (int) session.getAttribute("pNum");
+		return "redirect:main?pNum=" + pNum;
 	}
 
 	@RequestMapping(value = "/todoModifyForm", method = RequestMethod.GET)
 	public String showTodoModifyForm(Model model, @RequestParam(value = "tNum") int tNum) {
-		model.addAttribute("todo", todoService.getTodoByTNum(2));
+		model.addAttribute("todo", todoService.getTodoByTNum(tNum));
 		return "/todo/todoModifyForm";
 	}
 
 	@RequestMapping(value = "/modifyTodo", method = RequestMethod.POST)
-	public String modifyTodo(Todo todo) {
+	public String modifyTodo(HttpSession session, Todo todo) {
 		todoService.modifyTodo(todo);
-		return "redirect:main";
+		int pNum = (int) session.getAttribute("pNum");
+		return "redirect:main?pNum=" + pNum;
 	}
 
-	@RequestMapping(value = "/removeTodo", method = RequestMethod.POST)
-	public String removeTodo(@RequestParam(value = "tNum") int tNum, @RequestParam(value = "pNum") int pNum) {
+	@RequestMapping(value = "/removeTodo")
+	public String removeTodo(HttpSession session, @RequestParam(value = "tNum") int tNum) {
 		todoService.removeTodo(tNum);
-		return "redirect:main";
+		int pNum = (int) session.getAttribute("pNum");
+		return "redirect:main?pNum=" + pNum;
 	}
 
 	@ResponseBody

@@ -17,7 +17,9 @@
 			<div>${todoValue.tDesc}</div>
 			<div>${todoValue.tStartDate}</div>
 			<div>${todoValue.tEndDate}</div>
+			<div>${todoValue.tIsComplete}</div>
 			<input type="button" value="this todo 수정" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
+			<input type="button" value="this todo 삭제" onclick="location.href='removeTodo?tNum=${todoValue.tNum}'">
 			<hr>
 		</c:forEach>
 		<hr>
