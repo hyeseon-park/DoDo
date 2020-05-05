@@ -9,10 +9,12 @@
 <body>
 	<form action="addTodo" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		Title<input type="text" name="tTitle">
-		Description<input type="text" name="tDesc">
-		mNum<input type="number" name="mNum">
-		pNum<input type="number" name="pNum">
+		제목<input type="text" name="tTitle">
+		설명<input type="text" name="tDesc">
+		누가<input type="number" name="mNum">
+<!-- 		시작날짜<input type="text" name="tStartDate"> -->
+<!-- 		종료날짜<input type="text" name="tEndDate"> -->
+		<input type="hidden" name="pNum" value="${pNum}">
 		<input type="submit" value="추가">
 	</form>
 </body>

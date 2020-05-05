@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Todo;
+import service.MemberService;
 import service.TodoService;
 
 @Controller
@@ -22,16 +24,27 @@ import service.TodoService;
 public class TodoController {
 	@Autowired
 	private TodoService todoService;
+	@Autowired
+	private MemberService memberService;
 
 	@RequestMapping("/main")
 	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
-		Map<Integer, Object> todoMap = new HashMap<Integer, Object>();
+		Map<String, List<Todo>> todoMap = new HashMap<String, List<Todo>>();
 		List<Todo> todoList = todoService.getTodoByPNum(pNum);
 
 		for (int i = 0; i < todoList.size(); i++) {
 			int mNum = todoList.get(i).getmNum();
-			List<Todo> todoListByMNum = todoService.getTodoByMNum(mNum);
-			todoMap.put(mNum, todoListByMNum);
+			String mId = memberService.getMemberByMNum(mNum).getmId();
+
+			if (!todoMap.containsKey(mId)) {
+				List<Todo> todoListPerMember = new ArrayList<Todo>();
+				todoListPerMember.add(todoList.get(i));
+				todoMap.put(mId, todoListPerMember);
+			} else {
+				List<Todo> todoListPerMember = todoMap.get(mId);
+				todoListPerMember.add(todoList.get(i));
+				todoMap.put(mId, todoListPerMember);
+			}
 		}
 
 		model.addAttribute("todoMap", todoMap);
@@ -40,7 +53,9 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
-	public String showTodoAddForm() {
+	public String showTodoAddForm(HttpSession session, Model model) {
+		int pNum = (int) session.getAttribute("pNum");
+		model.addAttribute("pNum", pNum);
 		return "/todo/todoAddForm";
 	}
 
