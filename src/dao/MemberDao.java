@@ -15,6 +15,9 @@ public interface MemberDao {
 	
 	public List<Member> selectMemberByPNum(int pNum);
 	
+	public List<Member> selectMemberListExceptMeByPNum(int pNum, int mNum);
+	
 	public List<Member> selectMemberByKeyword(String keyword);
 	
 }
+

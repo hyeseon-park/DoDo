@@ -34,5 +34,9 @@ public class MemberService {
 	public List<Member> searchMemberList(String keyword){
 		return memberDao.selectMemberByKeyword(keyword);
 	}
+
+	public List<Member> getProjectMemberListExceptMe(int pNum, int mNum){
+		return memberDao.selectMemberListExceptMeByPNum(pNum, mNum);
+	}
 }
 

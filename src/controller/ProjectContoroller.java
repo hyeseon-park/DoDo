@@ -52,7 +52,7 @@ public class ProjectContoroller {
 			int pNum = projectList.get(i).getpNum();
 			Map<String, Object> projectMap = new HashMap<String, Object>();
 			projectMap.put("projectList", projectList.get(i));
-			projectMap.put("projectMemberList", projectService.getProjectMemberList(pNum));
+			projectMap.put("projectMemberList", memberService.getProjectMemberListExceptMe(pNum, mNum));
 			projectInfo.add(projectMap);
 		}
 		
