@@ -26,7 +26,7 @@
 	<select id="selectAlarmList" parameterType="int" resultMap="alarmMap">		
 		select a.a_num, a.a_member_to, a.a_member_from, a.p_num, m.m_id,p.p_title
 		from tbl_alarm a, tbl_project p, tbl_member m
-		where a.a_member_to = #{param1} and a.p_num = p.p_num and a.a_member_to = m.m_num
+		where a.a_member_to = #{param1} and a.p_num = p.p_num and a.a_member_from = m.m_num
 	</select>
 	
 	<resultMap type="alarm" id="alarmMap">

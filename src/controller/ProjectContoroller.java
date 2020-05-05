@@ -85,6 +85,14 @@ public class ProjectContoroller {
 		return "redirect:/project/main";
 	}
 	
+	@RequestMapping(value = "/exitProject")
+	public String exitProject(int pNum, Principal principal) {
+		String memberId = principal.getName();
+		Member member = memberService.getMemberByMId(memberId);
+		projectService.deleteProjectMember(member.getmNum(), pNum);
+		return "redirect:/project/main";
+	}
+	
 	@RequestMapping(value = "/inviteMemberForm")
 	public String inviteMemberForm(int pNum, Model model) {
 		model.addAttribute("projectNum", pNum);
@@ -111,15 +119,20 @@ public class ProjectContoroller {
 		return alarmService.getAlarmList(mNum);
 	}
 	
-	@ResponseBody
+
 	@RequestMapping(value = "/acceptInvite")
-	public boolean acceptInvite(int aNum, int pNum, int mNum) {
-		return alarmService.acceptInviteAlarm(aNum, pNum, mNum);
+	public String acceptInvite(int aNum, int pNum, int mNum) {
+		alarmService.acceptInviteAlarm(aNum, pNum, mNum);
+		return "redirect:/project/main";
 	}
 	
-	@ResponseBody
+
 	@RequestMapping(value = "/rejectInvite")
-	public boolean rejectInvite(int aNum) {
-		return alarmService.rejectInviteAlarm(aNum);	
+	public String rejectInvite(int aNum) {
+		System.out.println("rejectInvite");
+		alarmService.rejectInviteAlarm(aNum);
+		return "redirect:/project/main";
 	}
+	
+	
 }

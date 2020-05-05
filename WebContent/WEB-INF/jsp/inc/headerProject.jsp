@@ -10,21 +10,28 @@ var stompClient;
 var msgInfo;
 
 $(function(){
+	
 	socketConnect();
 	getAlarmList();
 	
-	
-}); //onload function end
+});
+
+
+
 
 function socketConnect(){
 	sock = new SockJS("/alarm");
 	stompClient = Stomp.over(sock);
 	stompClient.connect({},function(){
 		stompClient.subscribe("/category/invite/"+${member.mNum}, function(alarm){
-			alarmInfo = JSON.parse(alarm.body);
+			$(".alarmArea *").remove();
+			getAlarmList();
 		})
 	});
 }
+
+
+
 
 function getAlarmList(){
 	$.ajax({
@@ -32,82 +39,36 @@ function getAlarmList(){
 		data : {"mNum":${member.mNum}},
 		dataType : "json",
 		success : function(alarmList){
+			$(".alarmArea *").remove();
 			if(alarmList!=""){
 				$.each(alarmList,function(idx,alarm){
 					drawAlarmList(alarm);
-				});
-				
+				});				
 			}else{
 				
 			}
-		},
-		error : function(){
-			alert("alarmList 불러오기 실패!");
 		}
-		
 	});
 }
+
+
+
 
 function drawAlarmList(alarm){
 	var alarmArea = $(".alarmArea");
 	var alarmInfo = $("<div>");
+	var acceptBtn = $("<button onclick='location.href=\"${contextPath}/project/acceptInvite?aNum="+alarm.aNum+"&pNum="+alarm.pNum+"&mNum="+alarm.aMemberTo+"\"'>수락</button>");
+	var rejectBtn = $("<button onclick='location.href=\"${contextPath}/project/rejectInvite?aNum="+alarm.aNum+"\"'>거절</button>");
 	var alarmMsg = $("<p>");
-	var acceptBtn = $("<button>수락</button>");
-	var rejectBtn = $("<button>거절</button>");
-	
-	
 	alarmMsg.text(alarm.mId + "님이 " + alarm.pTitle + "에 초대하셨습니다.");
-	alarmInfo.append(alarmMsg);
-	
-	var acceptBtn = $("<button>수락</button>");
-	var rejectBtn = $("<button>거절</button>");
-	
+
 	alarmInfo.append(acceptBtn);
 	alarmInfo.append(rejectBtn);
+	alarmInfo.append(alarmMsg);
 
-	acceptBtn.on("click", function(){
-		accectInvite(alarm.aNum, alarm.pNum, alarm.aMemberTo);
-	});
-	
-	
-	acceptBtn.on("click", function(){
-		rejectInvite(alarm.aNum, alarm.pNum, alarm.aMemberTo);
-	});
-	
 	alarmArea.append(alarmInfo);
-		
 }
 
-function accectInvite(aNum, pNum, mNum){
-	$.ajax({
-		url : "${contextPath}/project/acceptInvite",
-		data : {"aNum":aNum,"pNum":pNum, "mNum":mNum},
-		dataType : "json",
-		sucess: function(data){
-			alert("수락!");
-			$(".alarmArea *").remove();
-			getAlarmList();
-		
-			
-		},
-		error:function(request,status,error){
-			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-	});	
-}
-
-function rejectInvite(){
-	$.ajax({
-		url : "${contextPath}/project/rejectInvite",
-		data : {"aNum":aNum},
-		dataType : "json",
-		sucess: function(data){
-			$(".alarmArea").isEmpty();
-			getAlarmList();
-		}
-	});	
-	
-}
 
 
 </script>
