@@ -13,11 +13,5 @@
 		from tbl_project_member
 		where p_num = #{param1} and m_num = #{param2}
 	</delete>
-	
-	<delete id="deleteProjectMemberByPNum">
-		delete
-		from tbl_project_member
-		where p_num = #{param1}
-	</delete>
-
+		
 </mapper>
