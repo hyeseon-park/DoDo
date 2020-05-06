@@ -35,21 +35,21 @@ public class TodoController {
 	@RequestMapping("/main")
 	public String showTodoMain(HttpSession session, Model model, @RequestParam(value = "pNum") int pNum) {
 		Map<String, List<Todo>> todoMap = new HashMap<String, List<Todo>>();
+		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
 		List<Todo> todoList = todoService.getTodoByPNum(pNum);
+
+		for (int i = 0; i < projectMemberList.size(); i++) {
+			List<Todo> todoListPerMember = new ArrayList<Todo>();
+			todoMap.put(projectMemberList.get(i).getmId(), todoListPerMember);
+		}
 
 		for (int i = 0; i < todoList.size(); i++) {
 			int mNum = todoList.get(i).getmNum();
 			String mId = memberService.getMemberByMNum(mNum).getmId();
 
-			if (!todoMap.containsKey(mId)) {
-				List<Todo> todoListPerMember = new ArrayList<Todo>();
-				todoListPerMember.add(todoList.get(i));
-				todoMap.put(mId, todoListPerMember);
-			} else {
-				List<Todo> todoListPerMember = todoMap.get(mId);
-				todoListPerMember.add(todoList.get(i));
-				todoMap.put(mId, todoListPerMember);
-			}
+			List<Todo> todoListPerMember = todoMap.get(mId);
+			todoListPerMember.add(todoList.get(i));
+			todoMap.put(mId, todoListPerMember);
 		}
 
 		model.addAttribute("todoMap", todoMap);
