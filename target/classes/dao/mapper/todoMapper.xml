@@ -4,13 +4,13 @@
 
 	<insert id="insertTodo" parameterType="todo">
 		insert into tbl_todo
-		(t_num, t_title, t_desc, t_start_date, t_end_date, t_is_complete, m_num, p_num)
-		values(seq_todo.nextval, #{tTitle}, #{tDesc}, #{tStartDate, jdbcType=VARCHAR}, #{tEndDate, jdbcType=VARCHAR}, #{tIsComplete}, #{mNum}, #{pNum})
+		(t_num, t_title, t_desc, t_is_complete, m_num, p_num)
+		values(seq_todo.nextval, #{tTitle}, #{tDesc}, #{tIsComplete}, #{mNum}, #{pNum})
 	</insert>
 
 	<update id="updateTodo" parameterType="todo">
 		update tbl_todo
-		set t_title = #{tTitle}, t_desc = #{tDesc}, t_start_date = #{tStartDate, jdbcType=VARCHAR}, t_end_date = #{tEndDate, jdbcType=VARCHAR}, t_is_complete = #{tIsComplete}, m_num = #{mNum}, p_num = #{pNum}
+		set t_title = #{tTitle}, t_desc = #{tDesc}, t_is_complete = #{tIsComplete}, m_num = #{mNum}, p_num = #{pNum}
 		where t_num = #{tNum}
 	</update>	
 
@@ -41,8 +41,6 @@
 	<resultMap id="todoMap" type="todo">
 		<result column="t_title" property="tTitle" />
 		<result column="t_desc" property="tDesc" />
-		<result column="t_start_date" property="tStartDate" />
-		<result column="t_end_date" property="tEndDate" />
 		<result column="t_is_complete" property="tIsComplete" />
 		<result column="m_num" property="mNum" />
 		<result column="p_num" property="pNum" />
