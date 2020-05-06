@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
+<link rel="stylesheet" type="text/css" href="${contextPath }/css/header.css"/>
 <title>project create</title>
 </head>
 <script>
@@ -15,7 +16,7 @@ $(function(){
 
 </script>
 <body>
-	<%@ include file="/WEB-INF/jsp/inc/headerProject.jsp"%>
+	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<form action="addProject" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">	
 		프로젝트명<input type="text" name="pTitle">

@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
+<link rel="stylesheet" type="text/css" href="${contextPath }/css/header.css"/>
 <title>projectMain</title>
+
 </head>
 <body>
-	<%@ include file="/WEB-INF/jsp/inc/headerProject.jsp"%>
+	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<button onclick="location.href='projectAddForm'">프로젝트 생성</button>
 	
 	<c:if test="${empty projectInfo}">
 		<p>프로젝트를 추가해주세요!</p>
 	</c:if>
+
 	<ul>
 		<c:forEach items="${projectInfo}" var="projectInfo">
 			<li style="border: 1px solid black;">

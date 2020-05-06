@@ -17,7 +17,7 @@ $(function(){
 
 </script>
 <body>
-	<%@ include file="/WEB-INF/jsp/inc/headerProject.jsp"%>
+	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<form action="modifyProject" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="hidden"name="pNum" value="${project.pNum}">	
