@@ -7,8 +7,6 @@ public class Todo {
 	private int tNum;
 	private String tTitle;
 	private String tDesc;
-	private Date tStartDate;
-	private Date tEndDate;
 	private int tIsComplete;
 	private int mNum;
 	private int pNum;
@@ -31,18 +29,6 @@ public class Todo {
 	public void settDesc(String tDesc) {
 		this.tDesc = tDesc;
 	}
-	public Date gettStartDate() {
-		return tStartDate;
-	}
-	public void settStartDate(Date tStartDate) {
-		this.tStartDate = tStartDate;
-	}
-	public Date gettEndDate() {
-		return tEndDate;
-	}
-	public void settEndDate(Date tEndDate) {
-		this.tEndDate = tEndDate;
-	}
 	public int gettIsComplete() {
 		return tIsComplete;
 	}
@@ -64,8 +50,8 @@ public class Todo {
 	
 	@Override
 	public String toString() {
-		return "Todo [tNum=" + tNum + ", tTitle=" + tTitle + ", tDesc=" + tDesc + ", tStartDate=" + tStartDate
-				+ ", tEndDate=" + tEndDate + ", tIsComplete=" + tIsComplete + ", mNum=" + mNum + ", pNum=" + pNum + "]";
+		return "Todo [tNum=" + tNum + ", tTitle=" + tTitle + ", tDesc=" + tDesc + ", tIsComplete=" + tIsComplete
+				+ ", mNum=" + mNum + ", pNum=" + pNum + "]";
 	}
 	
 }
