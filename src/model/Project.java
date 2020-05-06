@@ -2,12 +2,18 @@ package model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Project {
 	
 	private int pNum;
 	private String pTitle;
 	private String pDesc;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pStartDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pEndDate;
 	private double pProgress;
 	

@@ -20,8 +20,8 @@
 				<p>${projectInfo.projectList.pNum }</p>
 				<p>${projectInfo.projectList.pTitle }</p>
 				<p>${projectInfo.projectList.pDesc }</p>
-				<p>${projectInfo.projectList.pStartDate }</p>
-				<p>${projectInfo.projectList.pEndDate }</p>
+				<p><fmt:formatDate value="${projectInfo.projectList.pStartDate}" pattern="yyyy-MM-dd" /></p>
+				<p><fmt:formatDate value="${projectInfo.projectList.pEndDate}" pattern="yyyy-MM-dd" /></p>
 				<p style="border: 0.5px dotted gray;">
 					<c:forEach items="${projectInfo.projectMemberList}" var="member">
 						<span>${member.mId}</span>
