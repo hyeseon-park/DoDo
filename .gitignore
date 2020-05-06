@@ -25,3 +25,7 @@ hs_err_pid*
 /.project
 /.springBeans
 /.tern-project
+
+### Java-Web ###
+## ignoring target file
+target/
