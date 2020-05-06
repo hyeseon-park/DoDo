@@ -66,9 +66,10 @@ public class ProjectContoroller {
 	}
 	
 	@RequestMapping(value = "/addProject", method = RequestMethod.POST)
-	public String createProject(Principal principal, Project project) {
+	public String createProject(Principal principal,Project project) {
 		String memberId = principal.getName();
 		int mNum = memberService.getMemberByMId(memberId).getmNum();
+		
 		projectService.addProject(project, mNum);
 		return "redirect:/project/main";
 	}
@@ -129,7 +130,6 @@ public class ProjectContoroller {
 
 	@RequestMapping(value = "/rejectInvite")
 	public String rejectInvite(int aNum) {
-		System.out.println("rejectInvite");
 		alarmService.rejectInviteAlarm(aNum);
 		return "redirect:/project/main";
 	}
