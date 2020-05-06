@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Member;
 import service.MemberService;
@@ -24,9 +26,19 @@ public class MemberController {
 		return "/member/joinForm";
 	}
 
-	@RequestMapping(value = "/joinMember", method = RequestMethod.POST)
+	@RequestMapping(value = "/joinMember", method = RequestMethod.GET)
 	public String joinMember(Member member) {
 		memberService.joinMember(member);
 		return "redirect:login";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/checkDuplication", method = { RequestMethod.POST, RequestMethod.GET })
+	public boolean checkDuplication(@RequestParam(value = "mId") String mId) {
+		if (memberService.getMemberByMId(mId) != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
