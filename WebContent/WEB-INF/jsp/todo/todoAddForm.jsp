@@ -15,13 +15,13 @@
 				</div>
 				<div class="todo_desc">
 					<p>설명</p>
-					<input type="text" name="tDesc">
+					<textarea rows="3" cols="20" name="tDesc"></textarea>
 				</div>
 				<div class="todo_mnum">			
 					<p>누가</p>
 					<div>
 						<c:forEach items="${projectMemberList}" var="pmList">
-							<div onclick="checkMember(this)">
+							<div class="todo_mid" onclick="checkMember(this)">
 								<p>${pmList.mId}</p>
 								<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
 							</div>
@@ -29,8 +29,11 @@
 							<script>
 								function checkMember(member) {
 									let $checkInput = $(member).find("input[type='radio']");
+									
 									$checkInput.prop('checked', function() {
+										$(".todo_mid").removeClass("mid_checked");
 										$checkInput.prop('checked', true);
+										$(member).addClass("mid_checked");
 									});
 								}
 							</script>

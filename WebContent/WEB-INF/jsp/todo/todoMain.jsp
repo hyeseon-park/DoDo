@@ -4,7 +4,7 @@
 <title>todoMain</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/todo.css"/>
 <body>
-	<%@ include file="/WEB-INF/jsp/inc/headerProject.jsp"%>
+	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
 		<input class="todo_project_btn" type="button" value="프로젝트 메인" onclick="location.href='../project/main'">
 		
@@ -23,12 +23,22 @@
 							<p class="todo_title">${todoValue.tTitle}</p>
 							<p class="todo_desc">${todoValue.tDesc}</p>
 							
-							<div class="todo_complete" data-tNum="${todoValue.tNum}" data-tIsComplete="${todoValue.tNum}" onclick="checkComplete(${todoValue.tNum})">
+							<div class="todo_complete" data-tNum="${todoValue.tNum}" data-tIsComplete="${todoValue.tIsComplete}" onclick="checkComplete(${todoValue.tNum})">
 								완료
 							</div>
 							<input type="hidden" value="${todoValue.tIsComplete}">
 								
 							<script>
+								$(function() {
+									$(".todo_complete[data-tIsComplete=1]").css({
+										color: "#25C87C",
+										borderColor: "#25C87C"
+									});
+									$(".todo_complete[data-tIsComplete=0]").css({
+										color: "#D1FCE9",
+										borderColor: "#D1FCE9"
+									});
+								})
 								function checkComplete(tNum) {
 									var tIsCompleteDiv = $(".todo_complete[data-tNum="+tNum+"]");
 									$.ajax({
