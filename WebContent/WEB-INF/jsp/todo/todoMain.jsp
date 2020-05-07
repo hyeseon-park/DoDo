@@ -27,8 +27,6 @@ div {border: 1px solid black; margin: 10px}
 				<div>
 					<p>${todoValue.tTitle}</p>
 					<p>${todoValue.tDesc}</p>
-					<p>${todoValue.tStartDate}</p>
-					<p>${todoValue.tEndDate}</p>
 					
 					<div>
 						<div class="tIsComplete" data-tNum="${todoValue.tNum}" data-tIsComplete="${todoValue.tNum}" onclick="checkComplete(${todoValue.tNum})">
