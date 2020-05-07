@@ -26,7 +26,7 @@ public class MemberController {
 		return "/member/joinForm";
 	}
 
-	@RequestMapping(value = "/joinMember", method = RequestMethod.GET)
+	@RequestMapping(value = "/joinMember", method = RequestMethod.POST)
 	public String joinMember(Member member) {
 		memberService.joinMember(member);
 		return "redirect:login";

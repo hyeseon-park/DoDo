@@ -1,1 +1,71 @@
 @charset "UTF-8";
+
+.container {
+	position: relative;
+	width: 900px;
+	height: 770px;
+	margin: 0 auto;
+	background-color: #25C87C;
+}
+
+.login_container,
+.join_container {
+	width: 335px;
+	height: 335px;
+	border: 1px solid #ffffff;
+    border-radius: 20px;	
+    background-color: #ffffff;
+    margin: auto;
+    top: 20%;
+    position: relative;
+}
+
+.member_logo {
+    text-align: center;
+    margin: 40px;
+}
+
+.member_id,
+.member_pw,
+.member_btn_div {
+	margin: 0 auto;
+	padding-bottom: 10px;
+    width: 200px;
+}
+
+.member_id input,
+.member_pw input {
+	text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #D1FCE9;
+    border: 0px solid;
+    border-radius: 4px;
+    height: 30px;
+    width: 200px;
+}
+
+.member_id p,
+.member_pw p {	
+	font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.member_id span {	
+	font-size: 10px;
+}
+
+.member_btn_div {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.member_btn_div input {
+	border: 0px;
+	border-radius: 30px;
+	background-color: #09F19C;
+	cursor: pointer;
+	height: 30px;
+    width: 70px;
+}

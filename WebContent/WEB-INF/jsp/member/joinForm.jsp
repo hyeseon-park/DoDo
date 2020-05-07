@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <title>joinForm</title>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/member.css"/>
 <script type="text/javascript">
 	$(function() {
 		$("#mId").on("blur", function() {
@@ -31,14 +28,26 @@
 		})
 	})
 </script>
-</head>
 <body>
-	<form action="joinMember" method="post" id="joinMemberForm">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		아이디<input type="text" name="mId" id="mId">
-		<span id="mIdCheckSentence"></span>
-		비밀번호<input type="password" name="mPw">
-		<input type="submit" value="가입">
-	</form>
+	<div class="container">
+		<div class="join_container">
+			<div class="member_logo">로고 위치</div>
+			<form action="joinMember" method="post" id="joinMemberForm">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<div class="member_id">
+					<p>아이디</p>
+					<input type="text" name="mId" id="mId">
+					<span id="mIdCheckSentence"></span>
+				</div>
+				<div class="member_pw">
+					<p>비밀번호</p>
+					<input type="password" name="mPw">
+				</div>
+				<div class="member_btn_div">
+					<input type="submit" value="가입">
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
