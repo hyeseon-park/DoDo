@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp"%>
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/header.css" />
-<link rel="stylesheet" type="text/css" href="${contextPath }/css/projectAddForm.css" />
+<link rel="stylesheet" type="text/css" href="${contextPath }/css/projectForm.css" />
 <title>Add Project</title>
 </head>
 <script>
@@ -29,7 +29,8 @@ $(function(){
 			<textarea class="project_description" rows="1" cols="1" name="pDesc" autocomplete="off"></textarea>
 			
 			<p class="title">Period</p>
-			<input type="text" name="pStartDate" class="project_start_date datepicker" autocomplete="off"> ~ <input type="text" name="pEndDate" class="project_end_date datepicker" autocomplete="off">
+			<input type="text" name="pStartDate" class="project_start_date datepicker" autocomplete="off"> ~ 
+			<input type="text" name="pEndDate" class="project_end_date datepicker" autocomplete="off">
 		
 			<input class="project_add_btn" type="submit" value="create">
 	</form>

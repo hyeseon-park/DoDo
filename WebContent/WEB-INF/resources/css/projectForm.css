@@ -46,6 +46,7 @@ input:focus, textarea:focus {
 
 .project_start_date, .project_end_date{
 	width: 47.5%;
+	text-align: center;
 }
 
 .project_add_btn{
