@@ -62,6 +62,10 @@
     width: 40px;
 }
 
+.todo_complete {
+	background-color: #FFFFFF;
+}
+
 .todo_project_btn {
 	border: 0px;
 	border-radius: 4px;
