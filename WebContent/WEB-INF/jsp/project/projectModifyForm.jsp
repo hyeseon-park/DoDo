@@ -27,7 +27,7 @@
 				<input type="text" name="pEndDate" class="project_end_date datepicker" value="<fmt:formatDate value='${project.pEndDate}' pattern='yyyy-MM-dd'/>" autocomplete="off">
 				<p class="check_sentence pPeriod_check_sentence">The end date can't be earlier than the start date.</p>
 				
-				<input class="project_add_btn" type="submit" value="modify">
+				<input class="project_add_btn" type="submit" value="EDIT">
 			</form>	
 		</div>
 	</div>

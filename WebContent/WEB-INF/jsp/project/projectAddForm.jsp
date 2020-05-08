@@ -26,7 +26,7 @@
 				<input type="text" name="pEndDate" class="project_end_date datepicker" autocomplete="off">
 				<p class="check_sentence pPeriod_check_sentence">The end date can't be earlier than the start date.</p>
 				
-				<input class="project_add_btn" type="submit" value="create">
+				<input class="project_add_btn" type="submit" value="CREATE">
 			</form>
 		</div>
 	</div>
