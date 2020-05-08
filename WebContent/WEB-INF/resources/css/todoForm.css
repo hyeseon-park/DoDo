@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+.container {
+	position: relative;
+	height: 900px;
+	margin: auto;
+	background-color: #25C87C;
+}
+
+.todo_addform_container,
+.todo_modifyform_container {
+	width: 360px;
+	height: 360px;
+    border-radius: 20px;	
+    margin: auto;
+    padding: 30px;
+    top: 10%;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.todo_title,
+.todo_desc,
+.todo_mnum {
+	margin: 0 auto;
+	padding-bottom: 10px;
+    width: 100%;
+}
+
+.todo_title input,
+.todo_desc textarea {
+	text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    height: 30px;
+    width: 100%;
+}
+
+.todo_desc textarea {
+    height: 100px;	
+}
+
+.todo_title p,
+.todo_desc p,
+.todo_mnum p {	
+	font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.todo_mid {	
+    border: 2px solid #D1FCE9;
+    border-radius: 4px;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.todo_btn_div {
+    text-align: center;	
+}
+
+.todo_btn_div input {
+	margin-top: 0px;
+}
+
+.mid_checked {
+	background-color: #D1FCE9;	
+}

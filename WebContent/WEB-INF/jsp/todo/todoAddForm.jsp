@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
 <title>todoAddForm</title>
-<link rel="stylesheet" type="text/css" href="${contextPath}/css/todo.css"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/todoForm.css"/>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
@@ -43,7 +43,7 @@
 				</div>
 				<div class="todo_btn_div">
 					<input type="hidden" name="pNum" value="${pNum}">
-					<input type="submit" value="추가">
+					<input type="submit" value="ADD">
 				</div>
 			</form>
 		</div>
