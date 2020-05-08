@@ -2,68 +2,122 @@
 
 .container {
 	position: relative;
-	width: 900px;
 	height: 900px;
-	margin: 30px auto 30px;
+	margin: auto;
+	background-color: #25C87C;
 }
 
 .todo_container {
-	border: 1px solid #D1FCE9;
 	width: 880px;
-    height: 800px;
+    height: 880px;
+    border-radius: 20px;
+    margin: auto;
 }
 
 .todo_inner_container {
 	width: 200px;
 	display: inline-block;
 	float: left;
-	border: 1px solid #5DFF9C;
     border-radius: 4px;
     padding: 5px;
+    background-color: #FFFFFF;
+    margin: 2px; 
+    text-align: center;
 }
 
 .todo_inner_inner_container {
-	border-radius: 4px;
+	border-radius: 10px;
     border: 1px solid #25C87C;
     padding: 4px;
-    margin: 1px;
+    margin: 5px;
+    height: 150px;
 }
 
-.todo_title {
+.todo_id {
+	display: inline-block;
+	margin: 10px 0px;
 	font-size: 20px;
-    font-weight: 600;	
 }
 
-.todo_desc {
+.todo_main_title {
 	font-size: 15px;
-    font-weight: 300;	
+    font-weight: 600;	
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.todo_main_desc {
+	font-size: 10px;
+    font-weight: 300;
+    text-align: center;	
+    margin: 15px;
+}
+
+.todo_progress {
+	margin: 10px 2px;
+}
+
+.todo_progress span {
+	background: #FFFFFF;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
 }
 
 .todo_progress_bar {
-	border: none;
 	height: 20px;
-	background: #ffffff;
-	border-radius: 4px;
-	width: calc(100% - 362px);
+	background: #FFFFFF;
+	width: calc(100% - 80px);
+	border-radius: 5px;
+}
+.todo_progress_bar::-webkit-progress-bar {
+	height: 20px;
+	background: #FFFFFF;
+	width: calc(100% - 80px);
+	border-radius: 5px;	
+}
+.todo_progress_bar::-webkit-progress-value {
+	height: 20px;
+	background: #5DFF9C;
+	width: calc(100% - 80px);
+ 	border-radius: 5px;
+}
+.todo_progress_bar::-moz-progress-bar {
+	height: 20px;
+	background: #FFFFFF;
+	width: calc(100% - 80px);
+	border-radius: 5px;
 }
 
+.todo_main_btn {	
+	text-align: right;
+}
 
-
-
-.todo_add_btn,
-.todo_modify_btn,
-.todo_remove_btn,
-.todo_complete {
+.todo_add_btn {
 	border: 0px;
-	border-radius: 4px;
+	border-radius: 10px;
 	background-color: #D1FCE9;
 	cursor: pointer;
-	height: 25px;
-    width: 40px;
+	width: 190px;
+}
+
+.todo_modify_btn,
+.todo_remove_btn {
+	cursor: pointer;
+	color: #25C87C;
+	display: inline-block;
 }
 
 .todo_complete {
+	border: 0px;
 	background-color: #FFFFFF;
+	display: inline-block;
+}
+
+.todo_complete p {
+	background-color: #25C87C;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .todo_project_btn {
@@ -75,27 +129,18 @@
     width: 100px;	
 }
 
-.todo_add_btn {
-	float: right;
-}
-
-.todo_complete {
-	display: inline-block;
-}
-
-
 /* todoAddForm.jsp */
 
 .todo_addform_container,
 .todo_modifyform_container {
 	width: 360px;
 	height: 360px;
-	border: 3px solid #25C87C;
     border-radius: 20px;	
     margin: auto;
     padding: 30px;
     top: 10%;
     position: relative;
+    background-color: #FFFFFF;
 }
 
 .todo_title,
