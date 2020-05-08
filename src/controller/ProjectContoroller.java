@@ -97,7 +97,7 @@ public class ProjectContoroller {
 	@RequestMapping(value = "/inviteMemberForm")
 	public String inviteMemberForm(int pNum, Model model) {
 		model.addAttribute("projectNum", pNum);
-		return "/project/inviteMemberForm";
+		return "/project/projectMemberInviteForm";
 	}
 	
 	@ResponseBody

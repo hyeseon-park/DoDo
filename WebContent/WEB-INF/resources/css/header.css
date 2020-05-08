@@ -8,6 +8,7 @@
 	padding: 10px 0;
 	border-bottom: 1px solid #e8e8e8;
 	text-align: center;
+	background-color: white;
 }
 
 .header_container>* {
@@ -63,6 +64,7 @@
 	background-color: #ffffff;
 	padding: 25px;
 	overflow: scroll;
+	z-index: 1;
 }
 
 .alarm_info_container .alarm_info {

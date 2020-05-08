@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+body {
+	background-color: #25C87C;
+}
+
+.container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.project_list_continer {
+	margin: 50px;
+	position: relative;
+}
+
+.project_add_btn, .project_container {
+	width: 330px;
+	height: 288px;
+	margin: 18px;
+	background-color: white;
+	border-radius: 5px;
+	float: left;
+	position: relative;
+}
+
+.project_add_btn {
+	text-align: center;
+	cursor: pointer;
+}
+
+.project_add_btn>p {
+	margin-top: 108px;
+}
+
+.project_add_btn .fa-plus {
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+
+.project_info {
+	padding: 30px;
+}
+
+.title {
+	font-size: 14px;
+	color: black;
+	margin-right: 12px;
+}
+
+.value {
+	font-size: 12px;
+	color: #777777;
+}
+
+.project_title {
+	font-size: 20px;
+}
+
+.project_progress {
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+progress {
+	width: 100%;
+}
+
+.project_period {
+	margin-top: 16px;
+}
+
+.project_member_add_btn, .project_member{
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+	margin: 9px 2px 0px;
+	border-radius: 50%;
+	text-align: center;
+	display: inline-block;
+	line-height: 30px;
+}
+
+.project_member_container {
+	margin-top: 20px;
+}
+
+.project_member_add_btn {
+	background-color: #25C87C;
+	color: white;
+}
+
+.project_member {
+	width: auto;
+	background-color: #D1FCE9;
+	font-size: 13px;
+}
+
+.project_remove_btn {
+	color: #25C87C;
+	position: absolute;
+	top: 28px;
+	right: 25px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+
+.project_view_btn, .project_modify_btn {
+	box-sizing: border-box;
+	width: 50%;
+	height: 55px;
+	position: absolute;
+	border-top: 0.5px solid #e6e6e6;
+	cursor: pointer;
+	text-align: center;
+	line-height: 55px;
+}
+
+.project_view_btn {
+	left: 0;
+	bottom: 0;
+	color: #25C87C;
+}
+
+.project_modify_btn {
+	right: 0;
+	bottom: 0;
+	border-left: 0.5px solid #e6e6e6;
+}
