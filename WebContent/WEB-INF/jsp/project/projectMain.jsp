@@ -57,14 +57,6 @@
 				</div> <!-- end project_container -->
 			</c:forEach>
 		</div> 
-
-
 	</div>
-
-
-	<c:if test="${empty projectInfo}">
-		<p>프로젝트를 추가해주세요!</p>
-	</c:if>
-
 </body>
 </html>

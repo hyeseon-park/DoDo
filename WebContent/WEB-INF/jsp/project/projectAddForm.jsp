@@ -19,21 +19,23 @@ $(function(){
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
-		<form class="project_add_container" action="addProject" method="post">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<div class="form_container project_add_container">
+			<form action="addProject" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
-			<p class="title">Project</p>
-			<input class="project_title" type="text" name="pTitle" autocomplete="off">
+				<p class="title">Project</p>
+				<input class="project_title" type="text" name="pTitle" autocomplete="off">
 			
-			<p class="title">Description</p>
-			<textarea class="project_description" rows="1" cols="1" name="pDesc" autocomplete="off"></textarea>
+				<p class="title">Description</p>
+				<textarea class="project_description" rows="1" cols="1" name="pDesc" autocomplete="off"></textarea>
 			
-			<p class="title">Period</p>
-			<input type="text" name="pStartDate" class="project_start_date datepicker" autocomplete="off"> ~ 
-			<input type="text" name="pEndDate" class="project_end_date datepicker" autocomplete="off">
+				<p class="title">Period</p>
+				<input type="text" name="pStartDate" class="project_start_date datepicker" autocomplete="off"> ~ 
+				<input type="text" name="pEndDate" class="project_end_date datepicker" autocomplete="off">
 		
-			<input class="project_add_btn" type="submit" value="create">
-	</form>
+				<input class="project_add_btn" type="submit" value="create">
+			</form>
+		</div>
 	</div>
 	
 </body>
