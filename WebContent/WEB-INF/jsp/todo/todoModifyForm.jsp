@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
 <title>todoModifyForm</title>
-<link rel="stylesheet" type="text/css" href="${contextPath}/css/todo.css"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/todoForm.css"/>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<div class="todo_btn_div">
-					<input type="submit" value="수정">
+					<input type="submit" value="EDIT">
 				</div>
 			</form>
 		</div>

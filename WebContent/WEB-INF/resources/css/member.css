@@ -2,19 +2,17 @@
 
 .container {
 	position: relative;
-	width: 900px;
 	height: 770px;
 	margin: 0 auto;
-	background-color: #25C87C;
 }
 
 .login_container,
 .join_container {
-	width: 335px;
-	height: 335px;
-	border: 1px solid #ffffff;
+	width: 390px;
+	height: 390px;
+	border: 1px solid #FFFFFF;
     border-radius: 20px;	
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     margin: auto;
     top: 20%;
     position: relative;
@@ -30,7 +28,7 @@
 .member_btn_div {
 	margin: 0 auto;
 	padding-bottom: 10px;
-    width: 200px;
+    width: 250px;
 }
 
 .member_id input,
@@ -40,9 +38,9 @@
     margin-bottom: 10px;
     background-color: #D1FCE9;
     border: 0px solid;
-    border-radius: 4px;
-    height: 30px;
-    width: 200px;
+    border-radius: 10px;
+    height: 35px;
+    width: 100%;
 }
 
 .member_id p,
@@ -56,16 +54,14 @@
 	font-size: 10px;
 }
 
-.member_btn_div {
-    text-align: center;
-    padding-top: 10px;
-}
-
 .member_btn_div input {
-	border: 0px;
-	border-radius: 30px;
-	background-color: #09F19C;
+	width: 100%;
+	height: 35px;
+	background-color: #25C87C;
+	color: white;
+	border-radius: 10px;
+	font-size: 23px;
+	margin-top: 2px;
+	border: none;
 	cursor: pointer;
-	height: 30px;
-    width: 70px;
 }
