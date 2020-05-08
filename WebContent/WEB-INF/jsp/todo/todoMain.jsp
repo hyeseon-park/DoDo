@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
 <title>todoMain</title>
-<link rel="stylesheet" type="text/css" href="${contextPath}/css/todo.css"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/todoMain.css"/>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
 		<div class="todo_container">
-			<input class="todo_project_btn" type="button" value="프로젝트 메인" onclick="location.href='../project/main'">
+			<input class="todo_project_btn" type="button" value="PROJECT" onclick="location.href='../project/main'">
 			
 			<div class="todo_progress">
 				<span>Progress</span>
@@ -34,7 +34,7 @@
 							<p class="todo_main_desc">${todoValue.tDesc}</p>
 							
 							<div class="todo_complete" data-tNum="${todoValue.tNum}" data-tIsComplete="${todoValue.tIsComplete}" onclick="checkComplete(${todoValue.tNum})">
-								<p>Complete</p>
+								<p><i class="fas fa-check"></i> COMPLETE</p>
 							</div>
 							<input type="hidden" value="${todoValue.tIsComplete}">
 								
@@ -45,8 +45,8 @@
 										borderColor: "#25C87C"
 									});
 									$(".todo_complete[data-tIsComplete=0]").css({
-										color: "#D1FCE9",
-										borderColor: "#D1FCE9"
+										color: "#C0CCC6",
+										borderColor: "#C0CCC6"
 									});
 								})
 								function checkComplete(tNum) {
@@ -59,9 +59,9 @@
 											var tIsComplete = progressMap.tIsComplete;
 											var progress = progressMap.progress;
 											if(tIsComplete==1) {
-												tIsCompleteDiv.css({color:"green"});
+												tIsCompleteDiv.css({color:"#25C87C"});
 											} else {
-												tIsCompleteDiv.css({color:"red"});
+												tIsCompleteDiv.css({color:"#C0CCC6"});
 											}
 											$(".todo_progress_bar").val(progress);
 										}

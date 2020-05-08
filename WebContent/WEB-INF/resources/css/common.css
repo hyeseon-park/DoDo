@@ -44,7 +44,7 @@ input:focus, textarea:focus {
 
 input[type='submit'] {
 	width: 100%;
-	height: 51px;
+	height: 50px;
 	background-color: #25C87C;
 	color: white;
 	border-radius: 10px;
