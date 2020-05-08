@@ -6,25 +6,35 @@
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
-		<input class="todo_project_btn" type="button" value="프로젝트 메인" onclick="location.href='../project/main'">
-		
-		<div>
-			진행률<progress class="todo_progress_bar" value="${progress}" max="100"></progress>
-		</div>
 		<div class="todo_container">
+			<input class="todo_project_btn" type="button" value="프로젝트 메인" onclick="location.href='../project/main'">
+			
+			<div class="todo_progress">
+				<span>Progress</span>
+				<progress class="todo_progress_bar" value="${progress}" max="100"></progress>
+			</div>
 			
 			<c:forEach items="${todoMap}" var="todoMap" varStatus="status">
 				<div class="todo_inner_container">
 					<span class="todo_id">${todoMap.key}</span>
-					<input class="todo_add_btn" type="button" value="추가" onclick="location.href='todoAddForm'">			
+					<input class="todo_add_btn" type="button" value="+" onclick="location.href='todoAddForm'">			
 					
 					<c:forEach items="${todoMap.value}" var="todoValue">
 						<div class="todo_inner_inner_container">
-							<p class="todo_title">${todoValue.tTitle}</p>
-							<p class="todo_desc">${todoValue.tDesc}</p>
+							<div class="todo_main_btn">
+								<div class="todo_modify_btn" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
+									<i class="fas fa-pencil-alt"></i>
+								</div>
+								<div class="todo_remove_btn"onclick="location.href='removeTodo?tNum=${todoValue.tNum}'">
+									<i class="far fa-times-circle"></i>
+								</div>
+							</div>
+							
+							<p class="todo_main_title">${todoValue.tTitle}</p>
+							<p class="todo_main_desc">${todoValue.tDesc}</p>
 							
 							<div class="todo_complete" data-tNum="${todoValue.tNum}" data-tIsComplete="${todoValue.tIsComplete}" onclick="checkComplete(${todoValue.tNum})">
-								완료
+								<p>Complete</p>
 							</div>
 							<input type="hidden" value="${todoValue.tIsComplete}">
 								
@@ -59,8 +69,6 @@
 								}
 							</script>
 							
-							<input class="todo_modify_btn" type="button" value="수정" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
-							<input class="todo_remove_btn" type="button" value="삭제" onclick="location.href='removeTodo?tNum=${todoValue.tNum}'">
 						</div>
 					</c:forEach>
 				</div>
