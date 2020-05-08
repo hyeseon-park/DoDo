@@ -67,7 +67,7 @@ $(function(){
 				<input type="hidden" name="aMemberFrom" value="${member.mNum}">
 				<input type="hidden" name="aMemberTo" class="inviteMemberTo">
 				<input type="hidden" name="pNum" value="${projectNum}">
-				<input class="search_member_id" autocomplete="off" type="text">
+				<input class="search_member_id" autocomplete="off" type="text" placeholder="Find a collaborator!">
 				<ul class="search_member_list_container"></ul>
 				<input class="invite_member_btn" type="submit" value="invite">
 			</form>
