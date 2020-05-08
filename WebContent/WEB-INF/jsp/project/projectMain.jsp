@@ -36,7 +36,7 @@
 
 						<div class="project_member_container">
 							<p class="title">Project Member</p>
-							<div class="project_member_add_btn" onclick="event.cancelBubble=true;location.href='inviteMemberForm?pNum=${projectInfo.projectList.pNum }'">+</div>
+							<div class="project_member_add_btn" onclick="location.href='inviteProjectMemberForm?pNum=${projectInfo.projectList.pNum }'">+</div>
 							<c:forEach items="${projectInfo.projectMemberList}" var="member" varStatus="status">
 								<c:set var="memberId" value="${member.mId }" />
 								<div class="project_member">${fn:substring(memberId,0,2) }</div>
@@ -45,7 +45,7 @@
 
 					</div> <!-- end projectInfo -->
 
-					<div class="project_remove_btn" onclick="event.cancelBubble=true;location.href='exitProject?pNum=${projectInfo.projectList.pNum }'">
+					<div class="project_remove_btn" onclick="event.cancelBubble=true;location.href='${contextPath }removeProject?pNum=${projectInfo.projectList.pNum }'">
 						<i class="far fa-times-circle"></i>
 					</div>
 

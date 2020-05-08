@@ -56,7 +56,7 @@ public class ProjectService {
 		return memberDao.selectMemberByPNum(pNum);
 	}
 
-	public boolean deleteProjectMember(int mNum, int pNum) {
+	public boolean removeProjectMember(int mNum, int pNum) {
 		return projectMemberDao.deleteProjectMember(pNum, mNum) > 0 ? true : false;
 	}
 

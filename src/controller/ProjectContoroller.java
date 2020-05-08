@@ -37,7 +37,7 @@ public class ProjectContoroller {
 	private SimpMessagingTemplate smt;
 
 	
-	@RequestMapping("/main")
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String showProjectMain(Principal principal ,HttpSession session, Model model) {
 		String memberId = principal.getName();
 		Member member = memberService.getMemberByMId(memberId);
@@ -60,13 +60,13 @@ public class ProjectContoroller {
 		return "/project/projectMain";
 	}
 	
-	@RequestMapping("/projectAddForm")
-	public String projectAddForm() {
+	@RequestMapping(value = "/projectAddForm", method = RequestMethod.GET)
+	public String showProjectAddForm() {
 		return "/project/projectAddForm";
 	}
 	
 	@RequestMapping(value = "/addProject", method = RequestMethod.POST)
-	public String createProject(Principal principal,Project project) {
+	public String addProject(Principal principal,Project project) {
 		String memberId = principal.getName();
 		int mNum = memberService.getMemberByMId(memberId).getmNum();
 		
@@ -75,29 +75,37 @@ public class ProjectContoroller {
 	}
 	
 	@RequestMapping(value = "/projectModifyForm", method = RequestMethod.GET)
-	public String projectModifyForm(int pNum, Model model) {
+	public String showProjectModifyForm(int pNum, Model model) {
 		model.addAttribute("project", projectService.getProject(pNum));		
 		return "/project/projectModifyForm";
 	}
 	
-	@RequestMapping(value = "/modifyProject")
-	public String projectModify(Project project) {
+	@RequestMapping(value = "/modifyProject", method = RequestMethod.POST)
+	public String modifyProject(Project project) {
 		projectService.modifyProject(project);
 		return "redirect:/project/main";
 	}
 	
-	@RequestMapping(value = "/exitProject")
-	public String exitProject(int pNum, Principal principal) {
+	@RequestMapping(value = "/removeProject", method = RequestMethod.GET)
+	public String removeProject(int pNum, Principal principal) {
 		String memberId = principal.getName();
 		Member member = memberService.getMemberByMId(memberId);
-		projectService.deleteProjectMember(member.getmNum(), pNum);
+		projectService.removeProjectMember(member.getmNum(), pNum);
 		return "redirect:/project/main";
 	}
 	
-	@RequestMapping(value = "/inviteMemberForm")
-	public String inviteMemberForm(int pNum, Model model) {
+	@RequestMapping(value = "/inviteProjectMemberForm", method = RequestMethod.GET)
+	public String inviteProjectMemberForm(int pNum, Model model) {
 		model.addAttribute("projectNum", pNum);
 		return "/project/projectMemberInviteForm";
+	}
+	
+	@RequestMapping(value = "/inviteProjectMember", method = RequestMethod.POST)
+	public String inviteProjectMember(Alarm alarm) {
+		int aNum = alarmService.addAlarm(alarm);
+		smt.convertAndSend("/category/invite/"+alarm.getaMemberTo(),alarmService.getAlarm(aNum));
+		return "redirect:/project/main";
+		
 	}
 	
 	@ResponseBody
@@ -106,29 +114,22 @@ public class ProjectContoroller {
 		return memberService.searchMemberList(keyword);
 	}
 	
-	@RequestMapping(value = "/inviteMember", method = RequestMethod.POST)
-	public String inviteMember(Alarm alarm) {
-		int aNum = alarmService.addAlarm(alarm);
-		smt.convertAndSend("/category/invite/"+alarm.getaMemberTo(),alarmService.getAlarm(aNum));
-		return "redirect:/project/main";
-		
-	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/showAlarmList")
+	@RequestMapping(value = "/showAlarmList", method = RequestMethod.GET)
 	public List<Alarm> showAlarmList(int mNum){
 		return alarmService.getAlarmList(mNum);
 	}
 	
 
-	@RequestMapping(value = "/acceptInvite")
+	@RequestMapping(value = "/acceptInvite", method = RequestMethod.GET)
 	public String acceptInvite(int aNum, int pNum, int mNum) {
 		alarmService.acceptInviteAlarm(aNum, pNum, mNum);
 		return "redirect:/project/main";
 	}
 	
 
-	@RequestMapping(value = "/rejectInvite")
+	@RequestMapping(value = "/rejectInvite", method = RequestMethod.GET)
 	public String rejectInvite(int aNum) {
 		alarmService.rejectInviteAlarm(aNum);
 		return "redirect:/project/main";

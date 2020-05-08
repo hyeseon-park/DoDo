@@ -62,7 +62,7 @@ $(function(){
 	<div class="container">
 		<div class="form_container project_member_invite_container">
 			<h5><i class="far fa-envelope form_container_icon"></i><br><span class="form_container_msg">Invite a collaborator to Project!</span></h5>
-			<form action="inviteMember" method="post">
+			<form action="inviteProjectMember" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="aMemberFrom" value="${member.mNum}">
 				<input type="hidden" name="aMemberTo" class="inviteMemberTo">
