@@ -15,10 +15,10 @@
 }
 
 .todo_inner_container {
-	width: 200px;
+	width: 205px;
 	display: inline-block;
 	float: left;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 5px;
     background-color: #FFFFFF;
     margin: 2px; 
@@ -30,27 +30,30 @@
     border: 1px solid #25C87C;
     padding: 4px;
     margin: 5px;
-    height: 150px;
+    height: 130px;
 }
 
 .todo_id {
 	display: inline-block;
-	margin: 10px 0px;
+	margin: 15px 0px;
 	font-size: 20px;
+	font-weight: 800;
 }
 
 .todo_main_title {
 	font-size: 15px;
     font-weight: 600;	
     text-align: center;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
 .todo_main_desc {
 	font-size: 10px;
     font-weight: 300;
     text-align: center;	
-    margin: 15px;
+    margin: 10px;
+    height: 25px;
+    line-height: 15px;
 }
 
 .todo_progress {
@@ -129,4 +132,5 @@
 	cursor: pointer;
 	height: 25px;
     width: 100px;	
+    margin-left: 2px;
 }
