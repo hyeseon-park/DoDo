@@ -59,11 +59,12 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
-	public String showTodoAddForm(HttpSession session, Model model) {
-
+	public String showTodoAddForm(HttpSession session, Model model, @RequestParam(value = "mId") String mId) {
+		
 		int pNum = (int) session.getAttribute("pNum");
 		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
 
+		model.addAttribute("mNum", memberService.getMemberByMId(mId).getmNum());
 		model.addAttribute("pNum", pNum);
 		model.addAttribute("projectMemberList", projectMemberList);
 

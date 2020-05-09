@@ -17,7 +17,7 @@
 			<c:forEach items="${todoMap}" var="todoMap" varStatus="status">
 				<div class="todo_inner_container">
 					<span class="todo_id">${todoMap.key}</span>
-					<input class="todo_add_btn" type="button" value="+" onclick="location.href='todoAddForm'">			
+					<input class="todo_add_btn" type="button" value="+" onclick="location.href='todoAddForm?mId=${todoMap.key}'">			
 					
 					<c:forEach items="${todoMap.value}" var="todoValue">
 						<div class="todo_inner_inner_container">
