@@ -60,7 +60,7 @@ public class TodoController {
 
 	@RequestMapping(value = "/todoAddForm", method = RequestMethod.GET)
 	public String showTodoAddForm(HttpSession session, Model model, @RequestParam(value = "mId") String mId) {
-		
+
 		int pNum = (int) session.getAttribute("pNum");
 		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
 
@@ -160,4 +160,18 @@ public class TodoController {
 		return progress;
 	}
 
+	@ResponseBody
+	@RequestMapping("/resortTodo")
+	public void resortTodo(@RequestParam(value = "priorityArray[]") List<Integer> priorityArray, @RequestParam(value = "pNum") int pNum, @RequestParam(value = "mId") String mId) {
+		int mNum = memberService.getMemberByMId(mId).getmNum();
+		List<Todo> todoList = todoService.getTodoByPNumAndMNum(pNum, mNum);
+
+		for (int i = 0; i < todoList.size(); i++) {
+			Todo todo = todoList.get(i);
+			int tNum = todo.gettNum();
+			int tIndex = priorityArray.indexOf(tNum);
+			todo.settPriority(tIndex);
+			todoService.modifyTodo(todo);
+		}
+	}
 }

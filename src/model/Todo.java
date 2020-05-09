@@ -6,6 +6,7 @@ public class Todo {
 	private String tTitle;
 	private String tDesc;
 	private int tIsComplete;
+	private int tPriority;
 	private int mNum;
 	private int pNum;
 	
@@ -33,6 +34,12 @@ public class Todo {
 	public void settIsComplete(int tIsComplete) {
 		this.tIsComplete = tIsComplete;
 	}
+	public int gettPriority() {
+		return tPriority;
+	}
+	public void settPriority(int tPriority) {
+		this.tPriority = tPriority;
+	}
 	public int getmNum() {
 		return mNum;
 	}
@@ -45,11 +52,9 @@ public class Todo {
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
-	
 	@Override
 	public String toString() {
 		return "Todo [tNum=" + tNum + ", tTitle=" + tTitle + ", tDesc=" + tDesc + ", tIsComplete=" + tIsComplete
-				+ ", mNum=" + mNum + ", pNum=" + pNum + "]";
+				+ ", tPriority=" + tPriority + ", mNum=" + mNum + ", pNum=" + pNum + "]";
 	}
-	
 }

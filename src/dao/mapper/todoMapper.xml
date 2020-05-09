@@ -10,7 +10,12 @@
 
 	<update id="updateTodo" parameterType="todo">
 		update tbl_todo
-		set t_title = #{tTitle}, t_desc = #{tDesc}, t_is_complete = #{tIsComplete}, m_num = #{mNum}, p_num = #{pNum}
+		set t_title = #{tTitle}, 
+			t_desc = #{tDesc}, 
+			t_is_complete = #{tIsComplete}, 
+			t_priority = #{tPriority}, 
+			m_num = #{mNum}, 
+			p_num = #{pNum}
 		where t_num = #{tNum}
 	</update>	
 
@@ -30,18 +35,28 @@
 		select * 
 		from tbl_todo 
 		where p_num = #{pNum}
+		order by t_priority asc
 	</select>	
 
 	<select id="selectTodoByMNum" parameterType="int" resultMap="todoMap">
 		select * 
 		from tbl_todo 
 		where m_num = #{mNum}
+		order by t_priority asc
 	</select>	
+	
+	<select id="selectTodoByPNumAndMNum" resultMap="todoMap">
+		select * 
+		from tbl_todo 
+		where m_num = #{mNum} and p_num = #{pNum}
+		order by t_priority asc
+	</select>
 	
 	<resultMap id="todoMap" type="todo">
 		<result column="t_title" property="tTitle" />
 		<result column="t_desc" property="tDesc" />
 		<result column="t_is_complete" property="tIsComplete" />
+		<result column="t_priority" property="tPriority" />
 		<result column="m_num" property="mNum" />
 		<result column="p_num" property="pNum" />
 		<result column="t_num" property="tNum" />

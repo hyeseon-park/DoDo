@@ -3,9 +3,11 @@
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
 <title>todoMain</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/todoMain.css"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
+		<input type="hidden" value="${pNum}" class="pNum">
 		<div class="todo_container">
 			<input class="todo_project_btn" type="button" value="PROJECT" onclick="location.href='../project/main'">
 			
@@ -15,9 +17,11 @@
 			</div>
 			
 			<c:forEach items="${todoMap}" var="todoMap" varStatus="status">
-				<div class="todo_inner_container">
+				<div class="todo_inner_container" data-mId="${todoMap.key}">
 					<span class="todo_id">${todoMap.key}</span>
 					<input class="todo_add_btn" type="button" value="+" onclick="location.href='todoAddForm?mId=${todoMap.key}'">			
+					
+					<div class="todo_one_member">
 					
 					<c:forEach items="${todoMap.value}" var="todoValue">
 						<div class="todo_inner_inner_container">
@@ -37,7 +41,7 @@
 								<p><i class="fas fa-check"></i> COMPLETE</p>
 							</div>
 							<input type="hidden" value="${todoValue.tIsComplete}">
-								
+							
 							<script>
 								$(function() {
 									$(".todo_complete[data-tIsComplete=1]").css({
@@ -71,6 +75,24 @@
 							
 						</div>
 					</c:forEach>
+					
+					</div>
+					
+					<script>
+						$(".todo_one_member").sortable({
+							update : function(event, ui) {
+				            var priorityArray = $(this).sortable('toArray');
+				            var pNum = $(".pNum").val();
+				            var mId = $(this).parent().attr("data-mId");
+					            $.ajax({
+					            	url : "${contextPath}/todo/resortTodo",
+					            	data : {"priorityArray" : priorityArray, "pNum" : pNum, "mId" : mId},
+					            	success : function(){
+					            	}
+					            });
+				            }
+						});
+					</script>
 				</div>
 			</c:forEach>
 		</div>
