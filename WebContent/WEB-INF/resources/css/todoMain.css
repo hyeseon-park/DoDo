@@ -53,6 +53,7 @@
     text-align: center;	
     margin: 10px;
     height: 25px;
+    line-height: 15px;
 }
 
 .todo_progress {
