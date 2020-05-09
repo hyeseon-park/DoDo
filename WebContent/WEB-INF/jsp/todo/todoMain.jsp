@@ -17,13 +17,15 @@
 			</div>
 			
 			<c:forEach items="${todoMap}" var="todoMap" varStatus="status">
+			
 				<div class="todo_inner_container" data-mId="${todoMap.key}">
 					<span class="todo_id">${todoMap.key}</span>
 					<input class="todo_add_btn" type="button" value="+" onclick="location.href='todoAddForm?mId=${todoMap.key}'">			
 					
-					<div class="todo_one_member">
+					<ul class="todo_one_member">
 					
 					<c:forEach items="${todoMap.value}" var="todoValue">
+						<li id="${todoValue.tNum}">
 						<div class="todo_inner_inner_container">
 							<div class="todo_main_btn">
 								<div class="todo_modify_btn" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
@@ -74,9 +76,10 @@
 							</script>
 							
 						</div>
+						</li>
 					</c:forEach>
 					
-					</div>
+					</ul>
 					
 					<script>
 						$(".todo_one_member").sortable({
