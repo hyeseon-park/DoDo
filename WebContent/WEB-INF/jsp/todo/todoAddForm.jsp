@@ -15,8 +15,18 @@
 				</div>
 				<div class="todo_desc">
 					<p>설명</p>
-					<textarea rows="3" cols="20" name="tDesc"></textarea>
+					<textarea rows="3" cols="20" name="tDesc" class="todo_desc_textarea"></textarea>
 				</div>
+				
+				<script>
+					$('.todo_desc_textarea').on('keyup', function() {
+						if($(this).val().length > 30) {
+							alert("글자수는 30자 이내로 제한됩니다.");
+							$(this).val($(this).val().substring(0, 30));
+						}
+					});
+				</script>				
+				
 				<input type="hidden" value="${mNum}" name="mNum">
 				<div class="todo_btn_div">
 					<input type="hidden" name="pNum" value="${pNum}">
