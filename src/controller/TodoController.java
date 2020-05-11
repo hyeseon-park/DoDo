@@ -83,8 +83,9 @@ public class TodoController {
 
 		int pNum = (int) session.getAttribute("pNum");
 		List<Member> projectMemberList = projectService.getProjectMemberList(pNum);
-
-		model.addAttribute("todo", todoService.getTodoByTNum(tNum));
+		Todo todo = todoService.getTodoByTNum(tNum);
+		model.addAttribute("todo", todo);
+		model.addAttribute("mNum", todo.getmNum());
 		model.addAttribute("projectMemberList", projectMemberList);
 
 		return "/todo/todoModifyForm";

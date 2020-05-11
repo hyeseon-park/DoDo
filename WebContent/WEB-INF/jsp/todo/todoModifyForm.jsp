@@ -16,7 +16,7 @@
 					<input type="text" name="tTitle" value="${todo.tTitle}">
 				</div>
 				<div class="todo_desc">
-					<p>설명</p>
+					<p>Description</p>
 					<textarea rows="3" cols="20" name="tDesc" class="todo_desc_textarea">${todo.tDesc}</textarea>
 				</div>
 				
@@ -30,14 +30,24 @@
 				</script>
 				
 				<div class="todo_mnum">			
-					<p>누가</p>
+					<p>Who</p>
 					<div>
 						<c:forEach items="${projectMemberList}" var="pmList">
-							<div class="todo_mid" onclick="checkMember(this)">
-								<p>${pmList.mId}</p>
-								<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
-							</div>
-							
+							<c:choose>
+								<c:when test="${pmList.mNum eq mNum}">
+									<div class="todo_mid mid_checked" onclick="checkMember(this)">
+										<p>${pmList.mId}</p>
+										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
+									</div>
+								</c:when>
+								<c:otherwise>
+								
+									<div class="todo_mid" onclick="checkMember(this)">
+										<p>${pmList.mId}</p>
+										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
+									</div>
+								</c:otherwise>
+							</c:choose>
 							<script>
 								function checkMember(member) {
 									let $checkInput = $(member).find("input[type='radio']");

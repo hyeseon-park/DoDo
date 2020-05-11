@@ -48,7 +48,8 @@
 }
 
 .todo_title p,
-.todo_desc p {	
+.todo_desc p,
+.todo_mnum p {	
 	font-size: 15px;
     font-weight: 600;
     margin-top: 10px;
@@ -78,7 +79,8 @@
 	margin-top: 10px;
 }
 
-.todo_modifyform_container .todo_btn_div input {
+.todo_modifyform_container 
+.todo_btn_div input {
 	margin-top: 0px;
 }
 
