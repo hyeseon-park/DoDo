@@ -41,7 +41,6 @@
 												}
 											}
 										</script>
-									
 									</div>
 									
 									<p class="todo_main_title">${todoValue.tTitle}</p>
@@ -72,10 +71,10 @@
 												success : function(progressMap) {
 													var tIsComplete = progressMap.tIsComplete;
 													var progress = progressMap.progress;
-													if(tIsComplete==1) {
-														tIsCompleteDiv.css({color:"#25C87C"});
+													if(tIsComplete == 1) {
+														tIsCompleteDiv.css({color : "#25C87C"});
 													} else {
-														tIsCompleteDiv.css({color:"#C0CCC6"});
+														tIsCompleteDiv.css({color : "#C0CCC6"});
 													}
 													$(".todo_progress_bar").val(progress);
 												}

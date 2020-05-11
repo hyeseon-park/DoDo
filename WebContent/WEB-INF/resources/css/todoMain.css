@@ -16,7 +16,7 @@
 }
 
 .todo_inner_container {
-	width: 205px;
+	width: 206px;
 	display: inline-block;
 	float: left;
     border-radius: 5px;
@@ -38,7 +38,8 @@
 	display: inline-block;
 	margin: 15px 0px;
 	font-size: 20px;
-	font-weight: 800;
+	font-weight: 600;
+	font-family: 'Baloo Bhaina 2';
 }
 
 .todo_main_title {
@@ -65,6 +66,7 @@
     color: #25C87C;
     font-size: 30px;
     font-weight: bold;
+    font-family: 'Baloo Bhaina 2';
 }
 
 .todo_progress_bar {
@@ -122,9 +124,10 @@
 .todo_complete p {
 	background-color: #FFFFFF;
 	border: 1px solid;
-    padding: 10px;
+    padding: 7px 8px 5px;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Baloo Bhaina 2';
 }
 
 .todo_project_btn {
