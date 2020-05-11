@@ -58,3 +58,10 @@
 .search_member_list_container li+li {
 	border-top: solid 1px #dadada;
 }
+
+.check_sentence {
+	color: red;
+	font-size: small;
+	margin: 8px 0px 0px 8px;
+	display: none;
+}

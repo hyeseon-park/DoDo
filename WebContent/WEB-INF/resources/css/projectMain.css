@@ -88,12 +88,16 @@ progress {
 .project_member_add_btn {
 	background-color: #25C87C;
 	color: white;
+	cursor: pointer;
 }
 
 .project_member {
-	width: auto;
 	background-color: #D1FCE9;
 	font-size: 13px;
+}
+
+.fa-ellipsis-h{
+	font-size: 7px;	
 }
 
 .project_remove_btn {
