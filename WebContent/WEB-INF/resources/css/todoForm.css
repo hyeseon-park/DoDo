@@ -37,7 +37,6 @@
 	text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid;
     border-radius: 4px;
     height: 30px;
     width: 100%;
@@ -52,6 +51,7 @@
 .todo_mnum p {	
 	font-size: 15px;
     font-weight: 600;
+    font-family: 'Baloo Bhaina 2';
     margin-top: 10px;
 }
 
