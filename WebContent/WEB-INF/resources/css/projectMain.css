@@ -96,6 +96,10 @@ progress {
 	font-size: 13px;
 }
 
+.fa-ellipsis-h{
+	font-size: 7px;	
+}
+
 .project_remove_btn {
 	color: #25C87C;
 	position: absolute;

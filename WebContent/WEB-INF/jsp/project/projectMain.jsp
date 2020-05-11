@@ -58,7 +58,15 @@
 							<div class="project_member_add_btn" onclick="location.href='inviteProjectMemberForm?pNum=${projectInfo.projectList.pNum }'">+</div>
 							<c:forEach items="${projectInfo.projectMemberList}" var="member" varStatus="status">
 								<c:set var="memberId" value="${member.mId }" />
-								<div class="project_member">${fn:substring(memberId,0,2) }</div>
+								
+								<c:choose>
+									<c:when test="${status.index < 5}">
+										<div class="project_member">${fn:substring(memberId,0,2) }</div>
+									</c:when>
+									<c:when test="${status.index eq 5}">
+										<div class="project_member"><i class="fas fa-ellipsis-h"></i></div>
+									</c:when>
+								</c:choose>
 							</c:forEach>
 						</div>
 
