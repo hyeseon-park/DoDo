@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900|Noto+Sans+KR:100,300,400,500,700,900&display=swap');
+
+html {
+	width: 100%; 
+	height: 100%; 
+	font-family: 'Noto Sans KR', sans-serif; 
+	font-size: 15px;
+}
+
+input,
+textarea {
+	font-family: 'Noto Sans KR', sans-serif; 	
+}
+
 body {
 	background-color: #25C87C;
 }
