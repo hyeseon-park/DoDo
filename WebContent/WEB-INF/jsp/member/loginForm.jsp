@@ -6,20 +6,21 @@
 <body>
 	<div class="container">
 		<div class="login_container">
-			<div class="member_logo">로고 위치</div>
+			<div class="member_logo"><img src="${contextPath}/img/logo.png" height="40px"></div>
+			
 			<form action="login" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="member_id">
-					<p>아이디</p>
+					<p>ID</p>
 					<input type="text" name="mId">
 				</div>
 				<div class="member_pw">
-					<p>비밀번호</p>
+					<p>PASSWORD</p>
 					<input type="password" name="mPw">
 				</div>
 				<div class="member_btn_div">
-					<input type="submit" value="로그인">
-					<input type="button" value="가입" onclick="location.href='join'">
+					<input type="submit" value="SIGN IN">
+					<input type="button" value="SIGN UP" onclick="location.href='join'">
 				</div>
 			</form>
 		</div>

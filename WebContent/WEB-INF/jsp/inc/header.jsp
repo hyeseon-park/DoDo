@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" type="text/css" href="${contextPath }/css/header.css" />
 <script>
 
 var sock;
@@ -93,8 +93,8 @@ function alarmContainerDisplay(){
 
 <div class="header_container">
 
-	<a href="${contextPath }/project/main">
-		<img alt="도도 로고 이미지 입니다" src="http://via.placeholder.com/200x70">
+	<a href="${contextPath}/project/main">
+		<img alt="도도 로고 이미지" src="${contextPath}/img/logo.png" height="40px">
 	</a>
 	
 	<div class="alarm_btn_container">
