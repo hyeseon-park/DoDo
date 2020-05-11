@@ -12,11 +12,12 @@ $(function(){
 	$(".search_member_id").on("keyup", function() {
 		
 		var keyword = $(".search_member_id").val();
+		var pNum = $(".pNum").val();
 		if (keyword == "") {
 		}else{
 			$.ajax({
 				url : "${contextPath}/project/searchMemberList",
-				data : {"keyword":keyword},
+				data : {"keyword":keyword,"pNum":pNum},
 				type : "get",
 				dataType : "json",
 				success : function(mList){
@@ -66,7 +67,7 @@ $(function(){
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="aMemberFrom" value="${member.mNum}">
 				<input type="hidden" name="aMemberTo" class="inviteMemberTo">
-				<input type="hidden" name="pNum" value="${projectNum}">
+				<input class="pNum" type="hidden" name="pNum" value="${projectNum}">
 				<input class="search_member_id" autocomplete="off" type="text" placeholder="Find a collaborator!">
 				<ul class="search_member_list_container"></ul>
 				<input class="invite_member_btn" type="submit" value="invite">

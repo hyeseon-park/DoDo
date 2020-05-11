@@ -110,8 +110,8 @@ public class ProjectContoroller {
 	
 	@ResponseBody
 	@RequestMapping(value = "/searchMemberList", method = RequestMethod.GET)
-	public List<Member> searchMemberList(String keyword) {
-		return memberService.searchMemberList(keyword);
+	public List<Member> searchMemberList(String keyword, int pNum) {
+		return memberService.searchMemberList(keyword, pNum);
 	}
 	
 	
