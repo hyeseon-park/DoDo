@@ -6,7 +6,8 @@
 <body>
 	<div class="container">
 		<div class="login_container">
-			<div class="member_logo">로고 위치</div>
+			<div class="member_logo"><img src="${contextPath}/img/logo.png" height="40px"></div>
+			
 			<form action="login" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="member_id">

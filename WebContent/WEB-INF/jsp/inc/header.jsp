@@ -93,8 +93,8 @@ function alarmContainerDisplay(){
 
 <div class="header_container">
 
-	<a href="${contextPath }/project/main">
-		<img alt="도도 로고 이미지 입니다" src="http://via.placeholder.com/200x70">
+	<a href="${contextPath}/project/main">
+		<img alt="도도 로고 이미지" src="${contextPath}/img/logo.png" height="40px">
 	</a>
 	
 	<div class="alarm_btn_container">
