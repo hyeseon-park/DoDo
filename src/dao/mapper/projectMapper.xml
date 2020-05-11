@@ -13,7 +13,7 @@
 	
 	<update id="updateProject" parameterType="project">
 		update tbl_project
-		set p_title = #{pTitle}, p_desc = #{pDesc}, p_start_date = #{pStartDate, jdbcType=VARCHAR}, p_end_date = #{pEndDate, jdbcType=VARCHAR}, p_progress = #{pProgress}
+		set p_title = #{pTitle}, p_desc = #{pDesc, jdbcType=VARCHAR}, p_start_date = #{pStartDate, jdbcType=VARCHAR}, p_end_date = #{pEndDate, jdbcType=VARCHAR}, p_progress = #{pProgress, jdbcType=DOUBLE}
 		where p_num = #{pNum}
 	</update>
 	
