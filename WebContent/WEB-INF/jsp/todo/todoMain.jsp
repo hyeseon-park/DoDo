@@ -31,9 +31,17 @@
 										<div class="todo_modify_btn" onclick="location.href='todoModifyForm?tNum=${todoValue.tNum}'">
 											<i class="fas fa-pencil-alt"></i>
 										</div>
-										<div class="todo_remove_btn"onclick="location.href='removeTodo?tNum=${todoValue.tNum}'">
+										<div class="todo_remove_btn" onclick="removeTodo(${todoValue.tNum})">
 											<i class="far fa-times-circle"></i>
 										</div>
+										<script>
+											function removeTodo(tNum) {
+												if(confirm("삭제하시겠습니까?") == true) {
+													location.href = "removeTodo?tNum=${todoValue.tNum}";
+												}
+											}
+										</script>
+									
 									</div>
 									
 									<p class="todo_main_title">${todoValue.tTitle}</p>
