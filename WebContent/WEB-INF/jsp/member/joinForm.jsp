@@ -35,16 +35,16 @@
 			<form action="joinMember" method="post" id="joinMemberForm">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="member_id">
-					<p>아이디</p>
+					<p>ID</p>
 					<input type="text" name="mId" id="mId">
 					<span id="mIdCheckSentence"></span>
 				</div>
 				<div class="member_pw">
-					<p>비밀번호</p>
+					<p>PASSWORD</p>
 					<input type="password" name="mPw">
 				</div>
 				<div class="member_btn_div">
-					<input type="submit" value="가입">
+					<input type="submit" value="SIGN UP">
 				</div>
 			</form>
 		</div>
