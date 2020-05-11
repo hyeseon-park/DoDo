@@ -30,6 +30,19 @@ $(function(){
 		}
 	});
 	
+	$(".project_title").on("keyup", function() {
+		if($(this).val().length > 30) {
+			alert("글자수는 15자 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 30));
+		}
+	});
+
+	$("project_description").on("keyup", function() {
+		if($(this).val().length > 30) {
+			alert("글자수는 15자 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 30));
+		}
+	});
 	
 	
     $( ".datepicker" ).datepicker({
@@ -38,3 +51,4 @@ $(function(){
         changeYear: true
     });
 });
+
