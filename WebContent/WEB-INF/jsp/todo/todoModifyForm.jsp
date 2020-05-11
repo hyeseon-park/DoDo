@@ -36,14 +36,14 @@
 							<c:choose>
 								<c:when test="${pmList.mNum eq mNum}">
 									<div class="todo_mid mid_checked" onclick="checkMember(this)">
-										<p>${pmList.mId}</p>
+										<p>${fn:substring(pmList.mId, 0, 2)}</p>
 										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
 									</div>
 								</c:when>
 								<c:otherwise>
 								
 									<div class="todo_mid" onclick="checkMember(this)">
-										<p>${pmList.mId}</p>
+										<p>${fn:substring(pmList.mId, 0, 2)}</p>
 										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
 									</div>
 								</c:otherwise>
