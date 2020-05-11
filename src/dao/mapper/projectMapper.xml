@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="selectProjectByMNum" parameterType="int" resultMap="projectMap">
-		select p.p_num, p.p_title, p.p_desc, p.p_start_date, p.p_end_date
+		select p.p_num, p.p_title, p.p_desc, p.p_start_date, p.p_end_date, p.p_progress
 		from tbl_project p join tbl_project_member pm
 		on p.p_num = pm.p_num and pm.m_num = #{param1}
 		order by p.p_num desc
