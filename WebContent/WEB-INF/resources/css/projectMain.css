@@ -88,6 +88,7 @@ progress {
 .project_member_add_btn {
 	background-color: #25C87C;
 	color: white;
+	cursor: pointer;
 }
 
 .project_member {
