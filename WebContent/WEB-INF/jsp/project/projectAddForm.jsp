@@ -5,6 +5,21 @@
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/projectForm.css" />
 <title>Add Project</title>
 <script type="text/javascript" src="${contextPath}/js/projectForm.js"></script>
+<script>
+	$('.project_title').on('keyup', function() {
+		if($(this).val().length > 30) {
+			alert("글자수는 15자 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 30));
+		}
+	});
+	
+	$('.project_description').on('keyup', function() {
+		if($(this).val().length > 30) {
+			alert("글자수는 15자 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 30));
+		}
+	});
+</script>
 </head>
 
 <body>
