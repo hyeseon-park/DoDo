@@ -10,11 +10,11 @@
 			<form action="addTodo" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="todo_title">
-					<p>제목</p>
+					<p>Title</p>
 					<input type="text" name="tTitle">
 				</div>
 				<div class="todo_desc">
-					<p>설명</p>
+					<p>Description</p>
 					<textarea rows="3" cols="20" name="tDesc" class="todo_desc_textarea"></textarea>
 				</div>
 				

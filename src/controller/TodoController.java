@@ -54,6 +54,7 @@ public class TodoController {
 
 		model.addAttribute("todoMap", todoMap);
 		model.addAttribute("progress", projectService.getProject(pNum).getpProgress());
+		
 		session.setAttribute("pNum", pNum);
 		return "/todo/todoMain";
 	}
@@ -75,6 +76,7 @@ public class TodoController {
 	public String addTodo(HttpSession session, Todo todo) {
 		todoService.addTodo(todo);
 		int pNum = (int) session.getAttribute("pNum");
+		calculateProgress(pNum);
 		return "redirect:main?pNum=" + pNum;
 	}
 
@@ -102,6 +104,7 @@ public class TodoController {
 	public String removeTodo(HttpSession session, @RequestParam(value = "tNum") int tNum) {
 		todoService.removeTodo(tNum);
 		int pNum = (int) session.getAttribute("pNum");
+		calculateProgress(pNum);
 		return "redirect:main?pNum=" + pNum;
 	}
 
@@ -135,8 +138,14 @@ public class TodoController {
 			todo.settIsComplete(0);
 		}
 		todoService.modifyTodo(todo);
+		
+		double progress = calculateProgress(todo.getpNum());
+		progressMap.put("tIsComplete", todo.gettIsComplete());
+		progressMap.put("progress", progress);
+		return progressMap;
+	}
 
-		int pNum = todo.getpNum();
+	public double calculateProgress(int pNum) {
 		List<Todo> todoList = todoService.getTodoByPNum(pNum);
 
 		int allTodoCount = todoList.size();
@@ -146,15 +155,8 @@ public class TodoController {
 				completedTodoCount++;
 			}
 		}
-
-		double progress = calculateProgress(pNum, completedTodoCount, allTodoCount);
-		progressMap.put("tIsComplete", todo.gettIsComplete());
-		progressMap.put("progress", progress);
-		return progressMap;
-	}
-
-	public double calculateProgress(int pNum, int completedTodo, int allTodo) {
-		double progress = Math.round(((double) completedTodo / allTodo * 100) * 10) / 10.0;
+		
+		double progress = Math.round(((double) completedTodoCount / allTodoCount * 100) * 10) / 10.0;
 		Project project = projectService.getProject(pNum);
 		project.setpProgress(progress);
 		projectService.modifyProject(project);

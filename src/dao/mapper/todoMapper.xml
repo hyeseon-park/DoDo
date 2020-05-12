@@ -3,9 +3,12 @@
 <mapper namespace="dao.TodoDao">
 
 	<insert id="insertTodo" parameterType="todo">
+		<selectKey order="BEFORE" keyProperty="tNum" resultType="int">
+			select seq_todo.nextval from dual
+		</selectKey>
 		insert into tbl_todo
 		(t_num, t_title, t_desc, t_is_complete, m_num, p_num)
-		values(seq_todo.nextval, #{tTitle}, #{tDesc}, #{tIsComplete}, #{mNum}, #{pNum})
+		values(#{tNum}, #{tTitle}, #{tDesc}, #{tIsComplete}, #{mNum}, #{pNum})
 	</insert>
 
 	<update id="updateTodo" parameterType="todo">
