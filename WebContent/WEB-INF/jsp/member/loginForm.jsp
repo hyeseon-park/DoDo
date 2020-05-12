@@ -23,6 +23,15 @@
 				<div class="member_btn_div">
 					<input type="submit" value="SIGN IN" class="sign_in_btn">
 					<input type="button" value="SIGN UP" onclick="location.href='join'">
+					
+					<span class="sign_in_sentence">
+						<c:if test='${param.login eq "false"}'>
+						You do not have authority.
+						</c:if>
+						<c:if test='${param.login eq "fail"}'>
+						Please check your ID and password again.
+						</c:if>
+					</span>
 				</div>
 				
 				<script type="text/javascript">
@@ -51,6 +60,8 @@
 						return false;
 					})
 				</script>
+				
+				
 			</form>
 		</div>
 	</div>

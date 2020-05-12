@@ -75,8 +75,14 @@
 
 .member_id span,
 .member_pw span,
-.member_pw_check span {	
+.member_pw_check span,
+.sign_in_sentence {	
 	font-size: 10px;
+}
+
+.sign_in_sentence {
+	display: inline-block;
+	margin-top: 10px;
 }
 
 .member_btn_div input {
