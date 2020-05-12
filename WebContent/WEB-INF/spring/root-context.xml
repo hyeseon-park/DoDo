@@ -48,10 +48,5 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="dao.AlarmDao"></property>
 	</bean>
-
-	<bean id="projectMemberDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="dao.ProjectMemberDao"></property>
-	</bean>
 	
 </beans>
