@@ -30,20 +30,20 @@
 				</script>
 				
 				<div class="todo_mnum">			
-					<p>Who</p>
+					<p class="todo_mnum_p">Who</p>
 					<div>
 						<c:forEach items="${projectMemberList}" var="pmList">
 							<c:choose>
 								<c:when test="${pmList.mNum eq mNum}">
 									<div class="todo_mid mid_checked" onclick="checkMember(this)">
-										<p>${fn:substring(pmList.mId, 0, 2)}</p>
+										<p class="todo_mnum_circle">${fn:substring(pmList.mId, 0, 2)}</p>
 										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
 									</div>
 								</c:when>
 								<c:otherwise>
 								
 									<div class="todo_mid" onclick="checkMember(this)">
-										<p>${fn:substring(pmList.mId, 0, 2)}</p>
+										<p class="todo_mnum_circle">${fn:substring(pmList.mId, 0, 2)}</p>
 										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
 									</div>
 								</c:otherwise>

@@ -4,7 +4,7 @@
 	position: relative;
 	height: 900px;
 	margin: auto;
-	background-color: #F4FCF0;
+	background-color: #FFFFFF;
 	padding-top: 20px;
 }
 
@@ -21,7 +21,7 @@
 	float: left;
     border-radius: 5px;
     padding: 5px;
-    background-color: #FFFFFF;
+    background-color: #F4FCF0;
     margin: 2px; 
     text-align: center;
 }
@@ -31,6 +31,7 @@
     padding: 4px;
     margin: 5px;
     height: 130px;
+    background-color: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
 }
 
@@ -39,7 +40,6 @@
 	margin: 15px 0px;
 	font-size: 20px;
 	font-weight: 600;
-	font-family: 'Baloo Bhaina 2';
 }
 
 .todo_main_title {
@@ -60,10 +60,7 @@
 
 .todo_progress {
 	margin: 10px 2px;
-}
-
-.todo_progress span {
-    color: #25C87C;
+	color: #25C87C;
     font-size: 30px;
     font-weight: bold;
     font-family: 'Baloo Bhaina 2';
@@ -71,27 +68,27 @@
 
 .todo_progress_bar {
 	height: 20px;
-	background: #FFFFFF;
 	width: 100%;
-	border-radius: 5px;
-	margin-top: 10px;
+	background: #FFFFFF;
+	border: 1px solid #25C87C;
+	border-radius: 7px;
 }
 .todo_progress_bar::-webkit-progress-bar {
-	height: 20px;
-	background: #FFFFFF;
+	height: 100%;
 	width: 100%;
+	background: #FFFFFF;
 	border-radius: 5px;	
 }
 .todo_progress_bar::-webkit-progress-value {
-	height: 20px;
-	background: #25C87C;
+	height: 100%;
 	width: 100%;
+	background: #25C87C;
  	border-radius: 5px;
 }
 .todo_progress_bar::-moz-progress-bar {
-	height: 20px;
-	background: #FFFFFF;
+	height: 100%;
 	width: 100%;
+	background: #FFFFFF;
 	border-radius: 5px;
 }
 

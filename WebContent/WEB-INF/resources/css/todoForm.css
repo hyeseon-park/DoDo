@@ -43,21 +43,21 @@
 }
 
 .todo_desc textarea {
-    height: 100px;	
+    height: 100px;
+    padding-top: 7%;	
 }
 
 .todo_title p,
 .todo_desc p,
-.todo_mnum p {	
+.todo_mnum_p {	
 	font-size: 15px;
     font-weight: 600;
-    font-family: 'Baloo Bhaina 2';
     margin-top: 10px;
 }
 
-.todo_mnum p {	
-	font-size: 15px;
-    margin-top: 10px;
+.todo_mnum_circle {	
+	font-size: 12px;
+    margin-top: 9px;
 }
 
 .todo_mid {	

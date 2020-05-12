@@ -39,7 +39,7 @@
 										<script>
 											function removeTodo(tNum) {
 												if(confirm("삭제하시겠습니까?") == true) {
-													location.href = "removeTodo?tNum="+tNum;
+													location.href = "removeTodo?tNum=" + tNum;
 												}
 											}
 										</script>
