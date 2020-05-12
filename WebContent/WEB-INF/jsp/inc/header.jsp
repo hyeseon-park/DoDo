@@ -75,9 +75,12 @@ function alarmContainerDisplay(){
 	<a href="${contextPath}/project/main">
 		<img alt="도도 로고 이미지" src="${contextPath}/img/logo.png" height="40px">
 	</a>
-	<div class="alarm_btn_container">
+	<div class="alarm_container">
+		<div class="alarm_btn_container">
 		<i class="fas fa-bell"></i>	
-		<div class="numberOfAlarm"></div>	
+		<div class="numberOfAlarm"></div>
+		<div class="alarm_info_container"></div>
+	</div>
 	</div>
 	<div>
 		<form action="${contextPath}/member/logout" method="post">

@@ -41,9 +41,10 @@
 }
 
 .title {
-	font-size: 14px;
-	color: black;
-	margin-right: 12px;
+	font-size: 13px;
+    color: black;
+    margin-right: 12px;
+    font-weight: 500;
 }
 
 .value {
@@ -73,6 +74,7 @@
 	text-align: center;
 	display: inline-block;
 	line-height: 30px;
+	font-size: 13px;
 }
 
 .project_member_container {
@@ -87,7 +89,6 @@
 
 .project_member {
 	background-color: #D1FCE9;
-	font-size: 13px;
 }
 
 .fa-ellipsis-h {

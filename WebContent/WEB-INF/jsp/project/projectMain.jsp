@@ -37,7 +37,7 @@
 						<div class="project_member_container">
 							<p class="title">Project Member</p>
 							<div class="project_member_add_btn" onclick="location.href='inviteProjectMemberForm?pNum=${projectInfo.project.pNum }'">+</div>
-							<c:forEach items="${project.projectMemberList}" var="member" varStatus="status">
+							<c:forEach items="${projectInfo.projectMemberList}" var="member" varStatus="status">
 								<c:set var="memberId" value="${member.mId }" />
 								<c:choose>
 									<c:when test="${status.index < 5}">
