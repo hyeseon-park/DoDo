@@ -11,7 +11,9 @@
 		<div class="todo_container">
 			
 			<div class="todo_progress">
-				<span>Progress</span>
+				<span>Progress : </span>
+				<span class="todo_progress_span">${progress}</span>
+				<span>%</span>
 				<progress class="todo_progress_bar" value="${progress}" max="100"></progress>
 			</div>
 			
@@ -77,6 +79,8 @@
 														tIsCompleteDiv.css({color : "#C0CCC6"});
 													}
 													$(".todo_progress_bar").val(progress);
+													$(".todo_progress_span").empty();
+													$(".todo_progress_span").append(progress);
 												}
 											})
 										}
@@ -95,7 +99,6 @@
 								$.ajax({
 									url : "${contextPath}/todo/resortTodo",
 									data : {"priorityArray" : priorityArray, "pNum" : pNum, "mId" : mId},
-									
 								});
 							}
 						});
