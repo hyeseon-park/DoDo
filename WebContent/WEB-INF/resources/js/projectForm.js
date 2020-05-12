@@ -31,9 +31,9 @@ $(function(){
 	});
 	
 	$(".project_title").on("keyup", function() {
-		if($(this).val().length > 30) {
+		if($(this).val().length > 15) {
 			alert("글자수는 15자 이내로 제한됩니다.");
-			$(this).val($(this).val().substring(0, 30));
+			$(this).val($(this).val().substring(0, 15));
 		}
 	});
 
