@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-body {
-	background-color: #25C87C;
-}
-
 .container {
 	width: 1200px;
 	margin: 0 auto;
@@ -16,12 +12,14 @@ body {
 
 .project_add_btn, .project_container {
 	width: 330px;
-	height: 288px;
+	height: 300px;
 	margin: 18px;
 	background-color: white;
 	border-radius: 5px;
 	float: left;
 	position: relative;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	z-index: -1;
 }
 
 .project_add_btn {
@@ -62,19 +60,15 @@ body {
 	margin-top: 20px;
 }
 
-progress {
-	width: 100%;
-}
-
 .project_period {
 	margin-top: 16px;
 }
 
-.project_member_add_btn, .project_member{
+.project_member_add_btn, .project_member {
 	box-sizing: border-box;
 	width: 30px;
 	height: 30px;
-	margin: 9px 2px 0px;
+	margin: -4px 2px 0px;
 	border-radius: 50%;
 	text-align: center;
 	display: inline-block;
@@ -96,8 +90,8 @@ progress {
 	font-size: 13px;
 }
 
-.fa-ellipsis-h{
-	font-size: 7px;	
+.fa-ellipsis-h {
+	font-size: 7px;
 }
 
 .project_remove_btn {
@@ -108,7 +102,6 @@ progress {
 	font-size: 20px;
 	cursor: pointer;
 }
-
 
 .project_view_btn, .project_modify_btn {
 	box-sizing: border-box;
@@ -131,4 +124,35 @@ progress {
 	right: 0;
 	bottom: 0;
 	border-left: 0.5px solid #e6e6e6;
+}
+
+.project_progress_bar {
+	height: 20px;
+	background: #FFFFFF;
+	width: 100%;
+	border-radius: 5px;
+	margin-top: 6px;
+}
+
+.project_progress_bar::-webkit-progress-bar {
+	height: 20px;
+	background: #FFFFFF;
+	width: 100%;
+	border-radius: 5px;
+	border: 0.5px solid #e6e6e6;
+}
+
+.project_progress_bar::-webkit-progress-value {
+	height: 20px;
+	background: #25C87C;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.project_progress_bar::-moz-progress-bar {
+	height: 20px;
+	background: #FFFFFF;
+	width: 100%;
+	border-radius: 5px;
+	border: 0.5px solid #e6e6e6;
 }

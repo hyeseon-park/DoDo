@@ -7,8 +7,13 @@ import model.Alarm;
 public interface AlarmDao {
 	
 	public int insertAlarm(Alarm alarm);
+	
 	public int deleteAlarm(int aNum);
-	public Alarm selectAlarm(int aNum);
+	
+	public int deleteAlarmByPNum(int pNum);
+	
+	public List<Alarm> selectAlarmByPNum(int pNum);
+	
 	public List<Alarm> selectAlarmList(int aMemberTo);
 
 }

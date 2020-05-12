@@ -26,7 +26,7 @@ import service.ProjectService;
 @Controller
 @RequestMapping("/project")
 public class ProjectContoroller {
-	
+
 	@Autowired
 	private ProjectService projectService;
 	@Autowired
@@ -36,104 +36,97 @@ public class ProjectContoroller {
 	@Autowired
 	private SimpMessagingTemplate smt;
 
-	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String showProjectMain(Principal principal ,HttpSession session, Model model) {
+	public String showProjectMain(Principal principal, HttpSession session, Model model) {
 		String memberId = principal.getName();
 		Member member = memberService.getMemberByMId(memberId);
+		int mNum = member.getmNum();
 		session.setAttribute("member", member);
-		int mNum = memberService.getMemberByMId(memberId).getmNum();
-		
-		List<Map<String, Object>> projectInfo = new ArrayList<Map<String,Object>>();
 
+		List<Map<String, Object>> projectInfoList = new ArrayList<Map<String, Object>>();
 		List<Project> projectList = projectService.getProjectList(mNum);
-		
-		for(int i=0;i<projectList.size();i++) {
-			int pNum = projectList.get(i).getpNum();
-			Map<String, Object> projectMap = new HashMap<String, Object>();
-			projectMap.put("projectList", projectList.get(i));
-			projectMap.put("projectMemberList", memberService.getProjectMemberListExceptMe(pNum, mNum));
-			projectInfo.add(projectMap);
+		for (Project project : projectList) {
+			int pNum = project.getpNum();
+			Map<String, Object> projectInfo = new HashMap<String, Object>();
+			projectInfo.put("project", project);
+			projectInfo.put("projectMemberList", memberService.getProjectMemberListExceptMe(pNum, mNum));
+			projectInfoList.add(projectInfo);
 		}
-		
-		model.addAttribute("projectInfo", projectInfo);
+
+		model.addAttribute("projectInfoList", projectInfoList);
 		return "/project/projectMain";
 	}
-	
+
 	@RequestMapping(value = "/projectAddForm", method = RequestMethod.GET)
 	public String showProjectAddForm() {
 		return "/project/projectAddForm";
 	}
-	
+
 	@RequestMapping(value = "/addProject", method = RequestMethod.POST)
-	public String addProject(Principal principal,Project project) {
-		String memberId = principal.getName();
-		int mNum = memberService.getMemberByMId(memberId).getmNum();
-		
-		projectService.addProject(project, mNum);
+	public String addProject(HttpSession session, Project project) {
+		Member member = (Member) session.getAttribute("member");
+		projectService.addProject(project, member.getmNum());
 		return "redirect:/project/main";
 	}
-	
+
 	@RequestMapping(value = "/projectModifyForm", method = RequestMethod.GET)
 	public String showProjectModifyForm(int pNum, Model model) {
-		model.addAttribute("project", projectService.getProject(pNum));		
+		model.addAttribute("project", projectService.getProject(pNum));
 		return "/project/projectModifyForm";
 	}
-	
+
 	@RequestMapping(value = "/modifyProject", method = RequestMethod.POST)
 	public String modifyProject(Project project) {
 		projectService.modifyProject(project);
 		return "redirect:/project/main";
 	}
-	
+
 	@RequestMapping(value = "/removeProject", method = RequestMethod.GET)
-	public String removeProject(int pNum, Principal principal) {
-		String memberId = principal.getName();
-		Member member = memberService.getMemberByMId(memberId);
+	public String removeProject(HttpSession session, int pNum) {
+		Member member = (Member) session.getAttribute("member");
+		List<Alarm> alarmList = alarmService.getAlarmListByPNum(pNum);
 		projectService.removeProjectMember(member.getmNum(), pNum);
+		for (Alarm alarm : alarmList) {
+			smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(), "");
+		}
 		return "redirect:/project/main";
 	}
-	
+
 	@RequestMapping(value = "/inviteProjectMemberForm", method = RequestMethod.GET)
 	public String inviteProjectMemberForm(int pNum, Model model) {
 		model.addAttribute("projectNum", pNum);
 		return "/project/projectMemberInviteForm";
 	}
-	
+
 	@RequestMapping(value = "/inviteProjectMember", method = RequestMethod.POST)
 	public String inviteProjectMember(Alarm alarm) {
-		int aNum = alarmService.addAlarm(alarm);
-		smt.convertAndSend("/category/invite/"+alarm.getaMemberTo(),alarmService.getAlarm(aNum));
+		alarmService.addAlarm(alarm);
+		smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(), "");
 		return "redirect:/project/main";
-		
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/searchMemberList", method = RequestMethod.GET)
 	public List<Member> searchMemberList(String keyword, int pNum) {
 		return memberService.searchMemberList(keyword, pNum);
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/showAlarmList", method = RequestMethod.GET)
-	public List<Alarm> showAlarmList(int mNum){
+	public List<Alarm> showAlarmList(int mNum) {
 		return alarmService.getAlarmList(mNum);
 	}
-	
 
 	@RequestMapping(value = "/acceptInvite", method = RequestMethod.GET)
 	public String acceptInvite(int aNum, int pNum, int mNum) {
 		alarmService.acceptInviteAlarm(aNum, pNum, mNum);
 		return "redirect:/project/main";
 	}
-	
 
 	@RequestMapping(value = "/rejectInvite", method = RequestMethod.GET)
 	public String rejectInvite(int aNum) {
 		alarmService.rejectInviteAlarm(aNum);
 		return "redirect:/project/main";
 	}
-	
-	
+
 }
