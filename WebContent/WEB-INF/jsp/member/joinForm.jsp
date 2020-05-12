@@ -10,6 +10,7 @@
 			
 			if (mId == "") {
 				$("#mIdCheckSentence").text("Please enter your ID.");
+				$(".member_btn_div input").prop('disabled', true);
 			} else {
 				$.ajax({
 					url : "${contextPath}/member/checkDuplication",
@@ -20,7 +21,7 @@
 							$("#mIdCheckSentence").text("This ID is already in use.");
 							$(".member_btn_div input").prop('disabled', true);
 						} else {
-							$("#mIdCheckSentence").text("That's a great ID!");
+							$("#mIdCheckSentence").empty();
 							$(".member_btn_div input").prop('disabled', false);
 						}
 					}
@@ -60,7 +61,7 @@
 							$(".pw_check_sentence").text("Passwords do not match.");
 							$(".member_btn_div input").prop('disabled', true);
 						} else {
-							$(".pw_check_sentence").text("Passwords match.");
+							$(".pw_check_sentence").empty();
 							$(".member_btn_div input").prop('disabled', false);
 						}
 						return false;
