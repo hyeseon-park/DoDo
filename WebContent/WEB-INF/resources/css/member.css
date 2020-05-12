@@ -22,7 +22,7 @@
 
 .member_logo {
     text-align: center;
-    margin: 35px 0px 40px;
+    margin: 30px 0px 35px;
 }
 
 .join_container .member_logo {
@@ -43,8 +43,8 @@
 .member_pw input,
 .member_pw_check input {
 	text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     background-color: #D1FCE9;
     border: 0px solid;
     border-radius: 10px;
@@ -64,7 +64,7 @@
 .member_pw_check p {	
 	font-size: 15px;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .join_container .member_id p,
@@ -74,6 +74,7 @@
 }
 
 .member_id span,
+.member_pw span,
 .member_pw_check span {	
 	font-size: 10px;
 }
