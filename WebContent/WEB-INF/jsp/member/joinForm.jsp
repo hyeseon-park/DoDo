@@ -9,7 +9,8 @@
 			var mId = $("#mId").val();
 			
 			if (mId == "") {
-				$("#mIdCheckSentence").text("아이디를 입력해주세요.");
+				$("#mIdCheckSentence").text("Please enter your ID.");
+				$(".member_btn_div input").prop('disabled', true);
 			} else {
 				$.ajax({
 					url : "${contextPath}/member/checkDuplication",
@@ -17,9 +18,11 @@
 					dataType : "json",
 					success : function(result) {
 						if (result) {
-							$("#mIdCheckSentence").text("이미 사용중인 아이디입니다.");
+							$("#mIdCheckSentence").text("This ID is already in use.");
+							$(".member_btn_div input").prop('disabled', true);
 						} else {
-							$("#mIdCheckSentence").text("멋진 아이디네요!");
+							$("#mIdCheckSentence").empty();
+							$(".member_btn_div input").prop('disabled', false);
 						}
 					}
 				})
@@ -41,8 +44,30 @@
 				</div>
 				<div class="member_pw">
 					<p>PASSWORD</p>
-					<input type="password" name="mPw">
+					<input type="password" name="mPw" class="pw">
 				</div>
+				<div class="member_pw_check">
+					<p>PASSWORD CHECK</p>
+					<input type="password" name="mPwCheck" class="pw_check">
+					<span class="pw_check_sentence"></span>
+				</div>
+				
+				<script type="text/javascript">
+					$(".pw_check").on("blur", function() {
+						var pw = $(".pw").val();
+						var pwCheck = $(".pw_check").val();
+						
+						if (pw != pwCheck) {
+							$(".pw_check_sentence").text("Passwords do not match.");
+							$(".member_btn_div input").prop('disabled', true);
+						} else {
+							$(".pw_check_sentence").empty();
+							$(".member_btn_div input").prop('disabled', false);
+						}
+						return false;
+					})
+				</script>
+				
 				<div class="member_btn_div">
 					<input type="submit" value="SIGN UP">
 				</div>
