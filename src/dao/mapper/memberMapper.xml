@@ -47,14 +47,18 @@
 		on pm.p_num = #{param1} and pm.m_num = m.m_num and m.m_num != #{param2}
 	</select>
 	
-	<select id="selectMemberByKeyword" resultMap="memberMap">
+	<select id="selectMemberByKeyword" resultMap="memberMap">		
 		select m_num, m_id
-		from(
-			select m.m_num, m.m_id, pm.pm_num, nvl(pm.p_num,-1) as p_num
-			from tbl_member m left outer join tbl_project_member pm
-			on m.m_id like '%'||#{param1}||'%' and m.m_num = pm.m_num
-		)
-		where p_num != #{param2}
+		from tbl_member
+		where m_num not in(select m_num
+							from(select m.m_num, m.m_id, pm.pm_num, nvl(pm.p_num,-1) as p_num
+									from tbl_member m left outer join tbl_project_member pm
+									on m.m_id like '%'||#{param1}||'%' and m.m_num = pm.m_num)
+							where p_num = #{param2}) 
+			and m_num not in(select m_num 
+								from tbl_project_member 
+								where p_num = #{param2})
+			and m_id like '%'||#{param1}||'%'
 	</select>
 	
 	<resultMap id="memberMap" type="member">

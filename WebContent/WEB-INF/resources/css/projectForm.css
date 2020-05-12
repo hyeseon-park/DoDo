@@ -13,6 +13,13 @@
 	text-align: center;
 }
 
+.check_sentence {
+	color: red;
+	font-size: small;
+	margin: 8px 0px 0px 8px;
+	display: none;
+}
+
 /* Project Member Invite Form */
 .form_container h5 {
 	text-align: center;
@@ -48,20 +55,36 @@
 
 .search_member_list_container li {
 	box-sizing: border-box;
-    height: 49px;
-    padding: 18px 12px;
-    margin: 0px 30px;
-    font-size: 14px;
-    cursor: pointer;
+	height: 49px;
+	padding: 18px 12px;
+	font-size: 14px;
+	cursor: pointer;
 }
 
-.search_member_list_container li+li {
-	border-top: solid 1px #dadada;
+.search_member_list {
+	background-color: #F4FCF0;
+	margin: 10px 20px;
+	border-radius: 5px;
 }
 
-.check_sentence {
-	color: red;
-	font-size: small;
-	margin: 8px 0px 0px 8px;
+.search_member_list_container .search_member_list+.search_member_list {
+	margin-top: 10px;
+}
+
+.project_member_invite_container {
+	position: relative;
+}
+
+.reset_btn {
+	position: absolute;
 	display: none;
+	top: 227px;
+	right: 35px;
+	color: #25C87C;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
 }

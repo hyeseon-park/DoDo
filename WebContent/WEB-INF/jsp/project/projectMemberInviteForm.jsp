@@ -9,8 +9,13 @@
 $(function(){
 	$(".invite_member_btn").attr("disabled", true);
 	
+	$(".reset_btn").on("click",function(){
+		$(".search_member_id").val("");
+		$(".reset_btn").hide();
+		$(".invite_member_btn").attr("disabled", true);
+	});
+	
 	$(".search_member_id").on("keyup", function() {
-		
 		var keyword = $(".search_member_id").val();
 		var pNum = $(".pNum").val();
 		if (keyword == "") {
@@ -22,10 +27,10 @@ $(function(){
 				dataType : "json",
 				success : function(mList){
 					$(".search_member_list_container li").remove();
+					$(".search_member_list_container").show();
 					if(mList.length>0){
-						$(".search_member_list_container").show();
 						for(var i in mList){
-							var li = $("<li>");	
+							var li = $("<li class='search_member_list'>");	
 							li.text(mList[i].mId);
 							(function(m) {
 								li.on("click", function(){
@@ -33,27 +38,22 @@ $(function(){
 									$(".inviteMemberTo").val(mList[m].mNum);
 									$(".search_member_list_container").hide();
 									$(".invite_member_btn").attr("disabled", false);
+									$(".reset_btn").show();
 								});
 							})(i)
 							$(".search_member_list_container").append(li);
 						}
 					}else{
-						var li = $("<li>");						
+						var li = $("<li class='no_search_member_list'>");						
 						li.text("no result");
 						$(".search_member_list_container").append(li);
-
 					}
-					
-				},
-				error:function(request,status,error){
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
-			});//end ajax
-			
+			});
 		}
-		
 	});
 	
+
 });
 
 </script>
@@ -69,6 +69,7 @@ $(function(){
 				<input type="hidden" name="aMemberTo" class="inviteMemberTo">
 				<input class="pNum" type="hidden" name="pNum" value="${projectNum}">
 				<input class="search_member_id" autocomplete="off" type="text" placeholder="Find a collaborator!">
+				<div class="reset_btn"><i class="far fa-times-circle"></i></div>
 				<ul class="search_member_list_container"></ul>
 				<input class="invite_member_btn" type="submit" value="invite">
 			</form>
