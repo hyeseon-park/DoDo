@@ -3,30 +3,33 @@
 <mapper namespace="dao.AlarmDao">
 	
 	<insert id="insertAlarm">
-		<selectKey order="BEFORE" keyProperty="aNum" resultType="int">
-			select seq_alarm.nextval from dual
-		</selectKey>
 		insert into tbl_alarm
 		(a_num, a_member_to, a_member_from, p_num)
-		values(#{aNum}, #{aMemberTo}, #{aMemberFrom}, #{pNum})
+		values(seq_alarm.nextval, #{aMemberTo}, #{aMemberFrom}, #{pNum})
 	</insert>
 	
-	<delete id="deleteAlarm">
+	<delete id="deleteAlarm" parameterType="int">
 		delete
 		from tbl_alarm
 		where a_num = #{param1}
 	</delete>
 	
-	<select id="selectAlarm" parameterType="int" resultMap="alarmMap">
-		select *
+	<delete id="deleteAlarmByPNum" parameterType="int">
+		delete
 		from tbl_alarm
-		where a_num = #{param1}
-	</select>
+		where p_num = #{param1}
+	</delete>
 	
 	<select id="selectAlarmList" parameterType="int" resultMap="alarmMap">		
 		select a.a_num, a.a_member_to, a.a_member_from, a.p_num, m.m_id,p.p_title
 		from tbl_alarm a, tbl_project p, tbl_member m
 		where a.a_member_to = #{param1} and a.p_num = p.p_num and a.a_member_from = m.m_num
+	</select>
+	
+	<select id="selectAlarmByPNum" parameterType="int" resultMap="alarmMap">
+		select *
+		from tbl_alarm
+		where p_num = #{param1}
 	</select>
 	
 	<resultMap type="alarm" id="alarmMap">

@@ -63,11 +63,9 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/addProject", method = RequestMethod.POST)
-	public String addProject(Principal principal, Project project) {
-		String memberId = principal.getName();
-		int mNum = memberService.getMemberByMId(memberId).getmNum();
-
-		projectService.addProject(project, mNum);
+	public String addProject(HttpSession session, Project project) {
+		Member member = (Member) session.getAttribute("member");
+		projectService.addProject(project, member.getmNum());
 		return "redirect:/project/main";
 	}
 
@@ -84,17 +82,13 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/removeProject", method = RequestMethod.GET)
-	public String removeProject(int pNum, Principal principal) {
-		String memberId = principal.getName();
-		Member member = memberService.getMemberByMId(memberId);
+	public String removeProject(HttpSession session, int pNum) {
+		Member member = (Member) session.getAttribute("member");
 		List<Alarm> alarmList = alarmService.getAlarmListByPNum(pNum);
 		projectService.removeProjectMember(member.getmNum(), pNum);
-
 		for (Alarm alarm : alarmList) {
-			smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(),
-					alarmService.getAlarmList(alarm.getaMemberTo()));
+			smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(), "");
 		}
-
 		return "redirect:/project/main";
 	}
 
@@ -107,9 +101,8 @@ public class ProjectContoroller {
 	@RequestMapping(value = "/inviteProjectMember", method = RequestMethod.POST)
 	public String inviteProjectMember(Alarm alarm) {
 		alarmService.addAlarm(alarm);
-		smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(), alarmService.getAlarm(alarm.getaNum()));
+		smt.convertAndSend("/category/invite/" + alarm.getaMemberTo(), "");
 		return "redirect:/project/main";
-
 	}
 
 	@ResponseBody
