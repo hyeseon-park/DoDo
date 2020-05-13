@@ -27,7 +27,7 @@
 	width: 30px;
 	line-height: 30px;
 	position: absolute;
-	top: 53%;
+	top: 50%;
 	right: 130px;
 	font-size: 20px;
 	transform: translate(0%, -50%);
@@ -44,7 +44,7 @@
 	position: absolute;
 	top: 50%;
 	right: 19px;
-	font-size: 15px;
+	font-size: 13px;
 	transform: translate(0%, -50%);
 	cursor: pointer;
 	background-color: #25C87C;

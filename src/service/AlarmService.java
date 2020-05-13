@@ -31,9 +31,9 @@ public class AlarmService {
 	}
 
 	@Transactional
-	public boolean acceptInviteAlarm(int aNum, int pNum, int mNum) {
+	public boolean acceptInviteAlarm(int pNum, int mNum) {
 		if (projectDao.insertProjectMember(pNum, mNum) > 0) {
-			if (alarmDao.deleteAlarm(aNum) > 0) {
+			if (alarmDao.deleteProjectAlarmByMemeberTo(pNum, mNum) > 0) {
 				return true;
 			}
 		}

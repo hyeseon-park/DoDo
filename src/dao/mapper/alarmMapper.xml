@@ -20,6 +20,12 @@
 		where p_num = #{param1}
 	</delete>
 	
+	<delete id="deleteProjectAlarmByMemeberTo" parameterType="int">
+		delete
+		from tbl_alarm
+		where p_num = #{param1} and a_member_to = #{param2}
+	</delete>
+	
 	<select id="selectAlarmList" parameterType="int" resultMap="alarmMap">		
 		select a.a_num, a.a_member_to, a.a_member_from, a.p_num, m.m_id,p.p_title
 		from tbl_alarm a, tbl_project p, tbl_member m
