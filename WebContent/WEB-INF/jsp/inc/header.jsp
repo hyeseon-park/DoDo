@@ -85,7 +85,7 @@ function alarmContainerDisplay(){
 	<div>
 		<form action="${contextPath}/member/logout" method="post">
 			<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}">
-			<button class="sign_out_btn">Sign out</button>
+			<button class="sign_out_btn">SIGN OUT</button>
 		</form>
 	</div>
 </div>
