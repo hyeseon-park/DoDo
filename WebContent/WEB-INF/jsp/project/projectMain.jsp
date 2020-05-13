@@ -49,7 +49,7 @@
 							</c:forEach>
 						</div>
 					</div>
-					<div class="project_remove_btn" onclick="event.cancelBubble=true;location.href='${contextPath }removeProject?pNum=${projectInfo.project.pNum }'">
+					<div class="project_remove_btn" onclick="event.cancelBubble=true;location.href='${contextPath }/removeProject?pNum=${projectInfo.project.pNum }'">
 						<i class="far fa-times-circle"></i>
 					</div>
 					<div>
