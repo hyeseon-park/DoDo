@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Alarm;
@@ -70,7 +71,7 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/projectModifyForm", method = RequestMethod.GET)
-	public String showProjectModifyForm(int pNum, Model model) {
+	public String showProjectModifyForm(@RequestParam(value = "pNum") int pNum, Model model) {
 		model.addAttribute("project", projectService.getProject(pNum));
 		return "/project/projectModifyForm";
 	}
@@ -93,7 +94,7 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/inviteProjectMemberForm", method = RequestMethod.GET)
-	public String inviteProjectMemberForm(int pNum, Model model) {
+	public String inviteProjectMemberForm(@RequestParam(value = "pNum") int pNum, Model model) {
 		model.addAttribute("projectNum", pNum);
 		return "/project/projectMemberInviteForm";
 	}
