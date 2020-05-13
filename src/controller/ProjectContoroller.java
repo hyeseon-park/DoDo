@@ -83,7 +83,7 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/removeProject", method = RequestMethod.GET)
-	public String removeProject(HttpSession session, int pNum) {
+	public String removeProject(HttpSession session, @RequestParam(value = "pNum") int pNum) {
 		Member member = (Member) session.getAttribute("member");
 		List<Alarm> alarmList = alarmService.getAlarmListByPNum(pNum);
 		projectService.removeProjectMember(member.getmNum(), pNum);
@@ -114,18 +114,18 @@ public class ProjectContoroller {
 
 	@ResponseBody
 	@RequestMapping(value = "/showAlarmList", method = RequestMethod.GET)
-	public List<Alarm> showAlarmList(int mNum) {
+	public List<Alarm> showAlarmList(@RequestParam(value = "mNum") int mNum) {
 		return alarmService.getAlarmList(mNum);
 	}
 
 	@RequestMapping(value = "/acceptInvite", method = RequestMethod.GET)
-	public String acceptInvite(int aNum, int pNum, int mNum) {
+	public String acceptInvite(@RequestParam(value = "aNum") int aNum, @RequestParam(value = "pNum") int pNum, @RequestParam(value = "mNum") int mNum) {
 		alarmService.acceptInviteAlarm(aNum, pNum, mNum);
 		return "redirect:/project/main";
 	}
 
 	@RequestMapping(value = "/rejectInvite", method = RequestMethod.GET)
-	public String rejectInvite(int aNum) {
+	public String rejectInvite(@RequestParam(value = "aNum") int aNum) {
 		alarmService.rejectInviteAlarm(aNum);
 		return "redirect:/project/main";
 	}
