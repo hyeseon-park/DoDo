@@ -8,13 +8,13 @@
 		</selectKey>
 		insert into tbl_todo
 		(t_num, t_title, t_desc, t_is_complete, m_num, p_num)
-		values(#{tNum}, #{tTitle}, #{tDesc}, #{tIsComplete}, #{mNum}, #{pNum})
+		values(#{tNum}, #{tTitle}, #{tDesc, jdbcType=VARCHAR}, #{tIsComplete}, #{mNum}, #{pNum})
 	</insert>
 
 	<update id="updateTodo" parameterType="todo">
 		update tbl_todo
 		set t_title = #{tTitle}, 
-			t_desc = #{tDesc}, 
+			t_desc = #{tDesc, jdbcType=VARCHAR}, 
 			t_is_complete = #{tIsComplete}, 
 			t_priority = #{tPriority}, 
 			m_num = #{mNum}, 
