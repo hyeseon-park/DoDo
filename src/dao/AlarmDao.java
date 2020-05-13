@@ -12,6 +12,8 @@ public interface AlarmDao {
 	
 	public int deleteAlarmByPNum(int pNum);
 	
+	public int deleteProjectAlarmByMemeberTo(int pNum, int aMemberTo);
+	
 	public List<Alarm> selectAlarmByPNum(int pNum);
 	
 	public List<Alarm> selectAlarmList(int aMemberTo);

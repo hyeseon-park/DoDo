@@ -50,7 +50,7 @@ function drawAlarmList(alarm){
 	var alarmInfoContainer = $(".alarm_info_container");
 	var alarmInfo = $("<div class='alarm_info'>");
 	var btnContainer = $("<div class='btn_container'></div>")
-	var acceptBtn = $("<button class='alarm_accept_btn' onclick='location.href=\"${contextPath}/project/acceptInvite?aNum="+alarm.aNum+"&pNum="+alarm.pNum+"&mNum="+alarm.aMemberTo+"\"'>accept</button>");
+	var acceptBtn = $("<button class='alarm_accept_btn' onclick='location.href=\"${contextPath}/project/acceptInvite?pNum="+alarm.pNum+"&mNum="+alarm.aMemberTo+"\"'>accept</button>");
 	var rejectBtn = $("<button class='alarm_reject_btn' onclick='location.href=\"${contextPath}/project/rejectInvite?aNum="+alarm.aNum+"\"'>reject</button>");
 	var alarmMsg = $("<div class='alarm_msg'>");
 	alarmMsg.text(alarm.mId + "님이 " + alarm.pTitle + "에 초대하셨습니다.");
