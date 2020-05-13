@@ -119,7 +119,7 @@ public class ProjectContoroller {
 	}
 
 	@RequestMapping(value = "/acceptInvite", method = RequestMethod.GET)
-	public String acceptInvite(int aNum, @RequestParam(value = "pNum") int pNum, @RequestParam(value = "mNum") int mNum) {
+	public String acceptInvite(@RequestParam(value = "pNum") int pNum, @RequestParam(value = "mNum") int mNum) {
 		alarmService.acceptInviteAlarm(pNum, mNum);
 		return "redirect:/project/main";
 	}
