@@ -38,7 +38,7 @@
 										</div>
 										<script>
 											function removeTodo(tNum) {
-												if(confirm("삭제하시겠습니까?") == true) {
+												if(confirm("Are you sure you want to delete it?") == true) {
 													location.href = "removeTodo?tNum=" + tNum;
 												}
 											}

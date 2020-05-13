@@ -6,7 +6,7 @@
 </head>
 <script>
 function removeProject(pNum) {
-	if(confirm("삭제하시겠습니까?") == true) {
+	if(confirm("Are you sure you want to delete it?") == true) {
 		location.href = "${contextPath}/project/removeProject?pNum=" + pNum;
 	}
 }
@@ -16,7 +16,7 @@ function removeProject(pNum) {
 	<div class="container">
 		<div class="project_list_continer">
 			<div class="project_add_btn" onclick="location.href='${contextPath }/project/projectAddForm'">
-				<p><i class="fas fa-plus"></i><br>프로젝트를 추가해주세요!</p>
+				<p><i class="fas fa-plus"></i><br>Please create a project!</p>
 			</div>
 
 			<c:forEach items="${projectInfoList}" var="projectInfo">
