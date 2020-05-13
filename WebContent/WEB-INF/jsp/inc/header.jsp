@@ -39,7 +39,7 @@ function getAlarmList(){
 			}else{
 				$(".numberOfAlarm").hide();
 				var alarmInfoContainer = $(".alarm_info_container");
-				var noAlarmMsg = $("<div class='no_alarm_info'><i class='fas fa-bell'></i><p>새로운 알람이 없습니다.</p></div>");
+				var noAlarmMsg = $("<div class='no_alarm_info'><i class='fas fa-bell'></i><p>There is no new alarm.</p></div>");
 				alarmInfoContainer.append(noAlarmMsg);
 			}
 		}
@@ -53,7 +53,8 @@ function drawAlarmList(alarm){
 	var acceptBtn = $("<button class='alarm_accept_btn' onclick='location.href=\"${contextPath}/project/acceptInvite?pNum="+alarm.pNum+"&mNum="+alarm.aMemberTo+"\"'>accept</button>");
 	var rejectBtn = $("<button class='alarm_reject_btn' onclick='location.href=\"${contextPath}/project/rejectInvite?aNum="+alarm.aNum+"\"'>reject</button>");
 	var alarmMsg = $("<div class='alarm_msg'>");
-	alarmMsg.text(alarm.mId + "님이 " + alarm.pTitle + "에 초대하셨습니다.");
+	var alarmMsgText = $("<p>[ <span class='memberId'>" + alarm.mId + "</span> ] invited you to  [ <span class='projectTitle'>" + alarm.pTitle + "</span> ] project.</p>");
+	alarmMsg.append(alarmMsgText);
 	btnContainer.append(acceptBtn);
 	btnContainer.append(rejectBtn);
 	alarmInfo.append(alarmMsg);

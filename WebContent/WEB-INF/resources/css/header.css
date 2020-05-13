@@ -115,19 +115,22 @@
 	font-size: 13px;
 }
 
+.alarm_msg .memberId, .alarm_msg .projectTitle {
+	color: #25C87C;
+}
+
 .no_alarm_info {
 	width: 369px;
 	height: 49px;
 }
 
 .no_alarm_info>.fa-bell {
-	color: #cdd2d7;
-	font-size: 23px;
+	font-size: 18px;
 }
 
 .no_alarm_info .fa-bell+p {
 	font-size: 12px;
-	margin-top: 18px;
+	margin-top: -4px;
 }
 
 .btn_container {
