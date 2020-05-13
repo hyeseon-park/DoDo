@@ -11,6 +11,7 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="tNum" value="${todo.tNum}">
 				<input type="hidden" name="pNum" value="${todo.pNum}">
+				<input type="hidden" name="tIsComplete" value="${todo.tIsComplete}">
 				<div class="todo_title">
 					<p>Title</p>
 					<input type="text" name="tTitle" value="${todo.tTitle}" autocomplete="off">
@@ -37,7 +38,7 @@
 								<c:when test="${pmList.mNum eq mNum}">
 									<div class="todo_mid mid_checked" onclick="checkMember(this)">
 										<p class="todo_mnum_circle">${fn:substring(pmList.mId, 0, 2)}</p>
-										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;">
+										<input type="radio" value="${pmList.mNum}" name="mNum" style="display: none;" checked="checked">
 									</div>
 								</c:when>
 								<c:otherwise>
