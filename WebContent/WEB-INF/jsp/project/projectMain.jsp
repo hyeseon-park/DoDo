@@ -4,11 +4,18 @@
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/projectMain.css" />
 <title>Project Main</title>
 </head>
+<script>
+function removeProject(pNum) {
+	if(confirm("삭제하시겠습니까?") == true) {
+		location.href = "${contextPath}/project/removeProject?pNum=" + pNum;
+	}
+}
+</script>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
 		<div class="project_list_continer">
-			<div class="project_add_btn" onclick="location.href='projectAddForm'">
+			<div class="project_add_btn" onclick="location.href='${contextPath }/project/projectAddForm'">
 				<p><i class="fas fa-plus"></i><br>프로젝트를 추가해주세요!</p>
 			</div>
 
@@ -35,7 +42,7 @@
 						</p>
 						<div class="project_member_container">
 							<p class="title">Project Member</p>
-							<div class="project_member_add_btn" onclick="location.href='inviteProjectMemberForm?pNum=${projectInfo.project.pNum }'">+</div>
+							<div class="project_member_add_btn" onclick="location.href='${contextPath }/project/inviteProjectMemberForm?pNum=${projectInfo.project.pNum }'">+</div>
 							<c:forEach items="${projectInfo.projectMemberList}" var="member" varStatus="status">
 								<c:set var="memberId" value="${member.mId }" />
 								<c:choose>
@@ -49,12 +56,12 @@
 							</c:forEach>
 						</div>
 					</div>
-					<div class="project_remove_btn" onclick="event.cancelBubble=true;location.href='${contextPath }removeProject?pNum=${projectInfo.project.pNum }'">
+					<div class="project_remove_btn" onclick="removeProject(${projectInfo.project.pNum })">
 						<i class="far fa-times-circle"></i>
 					</div>
 					<div>
-						<div class="project_view_btn" onclick="location.href='../todo/main?pNum=${projectInfo.project.pNum }'">View Project</div>
-						<div class="project_modify_btn" onclick="location.href='projectModifyForm?pNum=${projectInfo.project.pNum }'">Edit Project</div>
+						<div class="project_view_btn" onclick="location.href='${contextPath }/todo/main?pNum=${projectInfo.project.pNum }'">View Project</div>
+						<div class="project_modify_btn" onclick="location.href='${contextPath }/project/projectModifyForm?pNum=${projectInfo.project.pNum }'">Edit Project</div>
 					</div>
 				</div>
 			</c:forEach>
