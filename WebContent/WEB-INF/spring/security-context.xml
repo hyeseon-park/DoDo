@@ -15,10 +15,10 @@
 								access="permitAll"/>
 								
 		<security:intercept-url pattern="/project/*" 
-								access="permitAll"/>
+								access="hasRole('ROLE_USER')"/>
 								
 		<security:intercept-url pattern="/todo/*" 
-								access="permitAll"/>
+								access="hasRole('ROLE_USER')"/>
 		
 		<security:access-denied-handler error-page="/member/login?login=false"/>
 		<security:form-login login-page="/member/login" 

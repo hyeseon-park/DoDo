@@ -46,7 +46,6 @@ public class TodoController {
 		for (int i = 0; i < todoList.size(); i++) {
 			int mNum = todoList.get(i).getmNum();
 			String mId = memberService.getMemberByMNum(mNum).getmId();
-
 			List<Todo> todoListPerMember = todoMap.get(mId);
 			todoListPerMember.add(todoList.get(i));
 			todoMap.put(mId, todoListPerMember);
