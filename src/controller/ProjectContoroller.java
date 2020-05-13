@@ -108,7 +108,7 @@ public class ProjectContoroller {
 
 	@ResponseBody
 	@RequestMapping(value = "/searchMemberList", method = RequestMethod.GET)
-	public List<Member> searchMemberList(String keyword, int pNum) {
+	public List<Member> searchMemberList(@RequestParam(value = "keyword") String keyword, @RequestParam(value = "pNum") int pNum) {
 		return memberService.searchMemberList(keyword, pNum);
 	}
 
