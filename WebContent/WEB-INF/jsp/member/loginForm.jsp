@@ -12,7 +12,7 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="member_id">
 					<p>ID</p>
-					<input type="text" name="mId" class="id">
+					<input type="text" name="mId" class="id" autocomplete="off">
 					<span class="id_sentence"></span>
 				</div>
 				<div class="member_pw">

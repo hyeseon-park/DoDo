@@ -13,7 +13,7 @@
 				<input type="hidden" name="pNum" value="${todo.pNum}">
 				<div class="todo_title">
 					<p>Title</p>
-					<input type="text" name="tTitle" value="${todo.tTitle}">
+					<input type="text" name="tTitle" value="${todo.tTitle}" autocomplete="off">
 				</div>
 				<div class="todo_desc">
 					<p>Description</p>

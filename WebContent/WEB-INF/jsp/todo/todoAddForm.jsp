@@ -11,7 +11,7 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="todo_title">
 					<p>Title</p>
-					<input type="text" name="tTitle">
+					<input type="text" name="tTitle" autocomplete="off">
 				</div>
 				<div class="todo_desc">
 					<p>Description</p>

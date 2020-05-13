@@ -39,7 +39,7 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="member_id">
 					<p>ID</p>
-					<input type="text" name="mId" id="mId">
+					<input type="text" name="mId" id="mId" autocomplete="off">
 					<span id="mIdCheckSentence"></span>
 				</div>
 				<div class="member_pw">
