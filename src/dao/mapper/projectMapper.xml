@@ -3,18 +3,18 @@
 <mapper namespace="dao.ProjectDao">
 
 	<insert id="insertProject" parameterType="project">
-		<selectKey order="BEFORE" keyProperty="pNum" resultType="int">
-			select seq_project.nextval from dual
-		</selectKey>
 		insert into tbl_project
-		(p_num, p_title, p_desc, p_start_date, p_end_date)
-		values(#{pNum}, #{pTitle}, #{pDesc}, #{pStartDate, jdbcType=VARCHAR}, #{pEndDate, jdbcType=VARCHAR})
+		(p_title, p_desc, p_start_date, p_end_date)
+		values(#{pTitle}, #{pDesc}, #{pStartDate, jdbcType=VARCHAR}, #{pEndDate, jdbcType=VARCHAR})
+		<selectKey order="AFTER" keyProperty="pNum" resultType="int">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<insert id="insertProjectMember">
 		insert into tbl_project_member
-		(pm_num, p_num, m_num)
-		values(seq_project_member.nextval, #{param1}, #{param2})
+		(p_num, m_num)
+		values(#{param1}, #{param2})
 	</insert>
 	
 	<update id="updateProject" parameterType="project">

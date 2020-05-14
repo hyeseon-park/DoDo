@@ -4,8 +4,8 @@
 	
 	<insert id="insertAlarm">
 		insert into tbl_alarm
-		(a_num, a_member_to, a_member_from, p_num)
-		values(seq_alarm.nextval, #{aMemberTo}, #{aMemberFrom}, #{pNum})
+		(a_member_to, a_member_from, p_num)
+		values(#{aMemberTo}, #{aMemberFrom}, #{pNum})
 	</insert>
 	
 	<delete id="deleteAlarm" parameterType="int">

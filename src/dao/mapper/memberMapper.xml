@@ -21,12 +21,13 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="member">
-		<selectKey order="BEFORE" keyProperty="mNum" resultType="int">
-			select seq_member.nextval from dual
-		</selectKey>
+
 		insert into tbl_member
-		(m_num, m_id, m_pw)
-		values (#{mNum}, #{mId}, #{mPw})
+		(m_id, m_pw)
+		values (#{mId}, #{mPw})
+		<selectKey order="AFTER" keyProperty="mNum" resultType="int">
+			select last_insert_id()
+		</selectKey>
 	</insert>	
 	
 	<insert id="insertAuthority" parameterType="int">
@@ -36,7 +37,7 @@
 	</insert>
 	
 	<select id="selectMemberByPNum" resultMap="memberMap">
-		select m.m_num, m.m_id, m.m_pw
+		select m.m_num, m.m_id
 		from tbl_project_member pm join tbl_member m
 		on pm.p_num = #{param1} and pm.m_num = m.m_num
 	</select>
@@ -51,14 +52,14 @@
 		select m_num, m_id
 		from tbl_member
 		where m_num not in(select m_num
-							from(select m.m_num, m.m_id, pm.pm_num, nvl(pm.p_num,-1) as p_num
+							from(select m.m_num, m.m_id, pm.pm_num, IFNULL(pm.p_num,-1) as p_num
 									from tbl_member m left outer join tbl_project_member pm
-									on m.m_id like '%'||#{param1}||'%' and m.m_num = pm.m_num)
+									on m.m_id like CONCAT('%',#{param1},'%') and m.m_num = pm.m_num) as member_list
 							where p_num = #{param2}) 
 			and m_num not in(select m_num 
 								from tbl_project_member 
 								where p_num = #{param2})
-			and m_id like '%'||#{param1}||'%'
+			and m_id like CONCAT('%',#{param1},'%')
 	</select>
 	
 	<resultMap id="memberMap" type="member">
