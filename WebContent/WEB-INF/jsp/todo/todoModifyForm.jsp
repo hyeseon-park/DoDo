@@ -11,6 +11,7 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="tNum" value="${todo.tNum}">
 				<input type="hidden" name="pNum" value="${todo.pNum}">
+				<input type="hidden" name="tPriority" value="${todo.tPriority}">
 				<input type="hidden" name="tIsComplete" value="${todo.tIsComplete}">
 				<div class="todo_title">
 					<p>Title</p>
