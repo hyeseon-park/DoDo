@@ -6,27 +6,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:component-scan base-package="service"/>
-
-	<!-- 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="dodo"></property>
-		<property name="password" value="dodo"></property>
-	</bean>
-	 -->
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@localhost:32775:XE" />
-		<property name="username" value="amy" />
-		<property name="password" value="hi123" />
-	</bean>
+      <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+      <property name="url" value="jdbc:mysql://127.0.0.1:3306/dodo_db?useSSL=false&amp;serverTimezone=UTC"></property>
+      <property name="username" value="dodo_id"></property>
+      <property name="password" value="dodo_pw"></property>
+   </bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mapperLocations" value="classpath:dao/mapper/**/*.xml"></property>
 		<property name="typeAliasesPackage" value="model"></property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
 	<bean id="memberDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 

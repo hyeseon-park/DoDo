@@ -73,12 +73,10 @@
 		<version>${org.springframework-version}</version>
 	</dependency>
 	<dependency>
-		<groupId>ojdbc</groupId>
-		<artifactId>ojdbc</artifactId>
-		<version>6</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/WebContent/WEB-INF/lib/ojdbc6.jar</systemPath>
-	</dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.20</version>
+   </dependency>
 	<dependency>
 		<groupId>org.mybatis</groupId>
 		<artifactId>mybatis</artifactId>
