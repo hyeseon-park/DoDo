@@ -38,8 +38,8 @@ $(function(){
 	});
 
 	$("project_description").on("keyup", function() {
-		if($(this).val().length > 30) {
-			alert("글자수는 15자 이내로 제한됩니다.");
+		if($(this).val().length > 20) {
+			alert("글자수는 20자 이내로 제한됩니다.");
 			$(this).val($(this).val().substring(0, 30));
 		}
 	});

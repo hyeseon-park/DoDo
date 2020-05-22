@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/inc/head.jsp"%>
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/header.css" />
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/projectForm.css" />
-<title>Project Member Invite Form</title>
+<title>DoDo</title>
 
 <script type="text/javascript">
 $(function(){

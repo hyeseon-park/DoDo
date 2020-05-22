@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp"%>
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/projectMain.css" />
-<title>Project Main</title>
+<title>DoDo</title>
 </head>
 <script>
 function removeProject(pNum) {
@@ -16,13 +16,14 @@ function removeProject(pNum) {
 	<div class="container">
 		<div class="project_list_continer">
 			<div class="project_add_btn" onclick="location.href='${contextPath }/project/projectAddForm'">
-				<p><i class="fas fa-plus"></i><br>Please create a project!</p>
+				<p><i class="fas fa-plus"></i><br>Please create a new project!</p>
 			</div>
 
 			<c:forEach items="${projectInfoList}" var="projectInfo">
 				<div class="project_container">
 					<div class="project_info">
 						<p class="project_title">${projectInfo.project.pTitle }</p>
+						<p class="project_desc value">${projectInfo.project.pDesc }</p>
 						<div class="project_progress">
 							<p><span class="title">Project Completed </span><span class="value">${projectInfo.project.pProgress }%</span></p>
 							<progress class="project_progress_bar" value="${projectInfo.project.pProgress }" max="100"></progress>
