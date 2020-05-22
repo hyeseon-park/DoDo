@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
-<title>todoModifyForm</title>
+<title>DoDo</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/todoForm.css"/>
 <body>
 	<%@ include file="/WEB-INF/jsp/inc/header.jsp"%>
 	<div class="container">
-		<div class=todo_modifyform_container>
+		<div class="form_container todo_modifyform_container">
 			<form action="modifyTodo" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="tNum" value="${todo.tNum}">
@@ -15,11 +15,21 @@
 				<input type="hidden" name="tIsComplete" value="${todo.tIsComplete}">
 				<div class="todo_title">
 					<p>Title</p>
-					<input type="text" name="tTitle" value="${todo.tTitle}" autocomplete="off">
+					<input type="text" name="tTitle" value="${todo.tTitle}" class="todo_title_input" autocomplete="off">
 				</div>
+				
+				<script>
+					$('.todo_title_input').on('keyup', function() {
+						if($(this).val().length > 15) {
+							alert("글자수는 15자 이내로 제한됩니다.");
+							$(this).val($(this).val().substring(0, 30));
+						}
+					});
+				</script>
+				
 				<div class="todo_desc">
 					<p>Description</p>
-					<textarea rows="3" cols="20" name="tDesc" class="todo_desc_textarea">${todo.tDesc}</textarea>
+					<textarea rows="1" cols="1" name="tDesc" class="todo_desc_textarea">${todo.tDesc}</textarea>
 				</div>
 				
 				<script>

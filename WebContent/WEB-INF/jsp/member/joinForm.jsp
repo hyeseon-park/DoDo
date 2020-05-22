@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp" %>
-<title>joinForm</title>
+<title>DoDo</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/member.css"/>
 <script type="text/javascript">
 	$(function() {

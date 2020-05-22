@@ -18,9 +18,9 @@ body {
 }
 
 /* form css */
+
 .form_container {
 	width: 400px;
-	height: 400px;
 	margin: 120px auto 0px;
 	background-color: #FFFFFF;
 	border-radius: 20px;
@@ -32,7 +32,7 @@ input[type='text'],
 textarea {
 	border: solid 1px #dadada;
 	padding: 10px 14px 10px 14px;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-sizing: border-box;
 }
 
