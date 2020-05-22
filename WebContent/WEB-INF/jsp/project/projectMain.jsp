@@ -23,6 +23,7 @@ function removeProject(pNum) {
 				<div class="project_container">
 					<div class="project_info">
 						<p class="project_title">${projectInfo.project.pTitle }</p>
+						<p class="project_desc value">${projectInfo.project.pDesc }</p>
 						<div class="project_progress">
 							<p><span class="title">Project Completed </span><span class="value">${projectInfo.project.pProgress }%</span></p>
 							<progress class="project_progress_bar" value="${projectInfo.project.pProgress }" max="100"></progress>

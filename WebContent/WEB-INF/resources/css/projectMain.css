@@ -56,6 +56,11 @@
 	font-size: 18px;
 }
 
+.project_desc {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
 .project_progress {
 	font-size: 14px;
 	margin-top: 20px;
