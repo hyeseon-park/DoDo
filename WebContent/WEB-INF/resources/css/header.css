@@ -31,11 +31,11 @@
 	right: 130px;
 	font-size: 20px;
 	transform: translate(0%, -50%);
-	cursor: pointer;
 }
 
 .alarm_btn_container>.fa-bell {
 	color: #636363;
+	cursor: pointer;
 }
 
 .sign_out_btn {
@@ -104,7 +104,7 @@
 }
 
 .alarm_msg {
-	sdisplay: inline-block;
+	display: inline-block;
 	position: absolute;
 	left: 20px;
 	top: 10px;
@@ -150,6 +150,7 @@
 	border: none;
 	background-color: #25C87C;
 	color: white;
+	cursor: pointer;
 }
 
 .btn_container .alarm_reject_btn {
