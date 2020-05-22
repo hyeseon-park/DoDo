@@ -16,7 +16,7 @@ function removeProject(pNum) {
 	<div class="container">
 		<div class="project_list_continer">
 			<div class="project_add_btn" onclick="location.href='${contextPath }/project/projectAddForm'">
-				<p><i class="fas fa-plus"></i><br>Please create a project!</p>
+				<p><i class="fas fa-plus"></i><br>Please create a new project!</p>
 			</div>
 
 			<c:forEach items="${projectInfoList}" var="projectInfo">
