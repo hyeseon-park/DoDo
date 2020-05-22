@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/inc/head.jsp"%>
 <link rel="stylesheet" type="text/css" href="${contextPath }/css/projectMain.css" />
-<title>Project Main</title>
+<title>DoDo</title>
 </head>
 <script>
 function removeProject(pNum) {
