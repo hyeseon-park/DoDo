@@ -53,6 +53,10 @@
 	border-radius: 10px;
 }
 
+.search_member_list_container::-webkit-scrollbar {
+	display: none;
+}
+
 .search_member_list_container li {
 	box-sizing: border-box;
 	height: 49px;
