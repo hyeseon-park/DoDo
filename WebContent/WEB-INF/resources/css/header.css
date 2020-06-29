@@ -87,6 +87,10 @@
 	overflow: scroll;
 }
 
+.alarm_info_container::-webkit-scrollbar {
+	display: none;
+}
+
 .alarm_info, .no_alarm_info {
 	position: relative;
 	padding: 20px;
